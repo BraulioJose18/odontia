@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ErrorPageComponent} from "./shared/error-page/error-page.component";
 import {SideMenuComponent} from "./shared/side-menu/side-menu.component";
+import {ProductModule} from "./product/product.module";
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth/login', pathMatch: 'full'},
@@ -29,6 +30,10 @@ const routes: Routes = [
         path: 'measurementUnit',
         loadChildren: ()=> import('./measurement_unit/measurement_unit.module').then(m => m.Measurement_unitModule)
       },
+      {
+        path: 'product',
+        loadChildren: ()=> import('./product/product.module').then(m => m.ProductModule)
+      },
     ]
   },
   {
@@ -46,7 +51,7 @@ const routes: Routes = [
   //Rutas hijas
  // { path: 'login', component: LoginComponent},
   //{ path: 'navigation', loadChildren: ()=> import('./navigation/navigation.module').then(x => x.NavigationModule) },
-  //{ path: 'category', loadChildren: ()=> import('./pages/category/category.module').then(x => x.Measurement_unitModule) },
+  //{ path: 'category', loadChildren: ()=> import('./pages/category/category.module').then(x => x.ProductModule) },
 
   //Redirecciona de ruta inexistente a ruta default
  // { path: '**', redirectTo: 'login', pathMatch: 'full'},

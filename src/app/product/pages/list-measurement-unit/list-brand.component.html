@@ -1,0 +1,80 @@
+<section class="crud-container">
+  <article class="header">
+    <h1 class="header__title-crud">Productos</h1>
+    <div class="header__buttons">
+      <mat-form-field class="search-field" appearance="fill">
+        <mat-label>Buscar</mat-label>
+        <input matInput type="text">
+        <button matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+      <button mat-raised-button class="add-button" (click)="crearActualizar()">
+        Agregar Producto
+        <mat-icon
+          style="cursor: pointer"
+        >
+          add
+        </mat-icon>
+      </button>
+    </div>
+  </article>
+  <article class="content">
+    <table mat-table [dataSource]="categories" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="width-column"> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="salePrice">
+        <th mat-header-cell *matHeaderCellDef class="width-column"> Precio de Venta </th>
+        <td mat-cell *matCellDef="let element"> {{element.salePrice}} </td>
+      </ng-container>
+      <ng-container matColumnDef="purchasePrice">
+        <th mat-header-cell *matHeaderCellDef class="width-column"> Precio de Compra </th>
+        <td mat-cell *matCellDef="let element"> {{element.purchasePrice}} </td>
+      </ng-container>
+      <ng-container matColumnDef="specifications">
+        <th mat-header-cell *matHeaderCellDef class="width-column"> Especificaciones </th>
+        <td mat-cell *matCellDef="let element"> {{element.specifications}} </td>
+      </ng-container>
+      <ng-container matColumnDef="observation">
+        <th mat-header-cell *matHeaderCellDef class="width-column"> Observaciones </th>
+        <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
+      </ng-container>
+      <ng-container matColumnDef="stock">
+        <th mat-header-cell *matHeaderCellDef class="width-column"> Stock </th>
+        <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element"> {{element.status ? 'Activo' : 'Inactivo'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button matTooltip="Editar Categoría" class="edit-button">
+            <mat-icon
+              style="cursor: pointer"
+            >
+              edit
+            </mat-icon>
+          </button>
+          <button mat-raised-button matTooltip="Eliminar Categoría" class="delete-button">
+            <mat-icon
+              style="cursor: pointer"
+            >
+              delete
+            </mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </article>
+</section>
+
+
