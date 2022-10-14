@@ -1,22 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {PagesModule} from "./pages/pages.module";
-import {AppMaterialModule} from "./app.material.module";
+import { HttpClientModule} from "@angular/common/http";
+
+import { AppRoutingModule } from './app-routing.module';
+import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import {SharedModule} from "./shared/shared.module";
+import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ErrorPageComponent,
+    AdminNavigationComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    PagesModule,
-    AppMaterialModule
+    HttpClientModule,
+    AppRoutingModule,
+    SharedModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
