@@ -21,6 +21,14 @@ const routes: Routes = [
         path: 'subcategory',
         loadChildren: ()=> import('./subcategory/subcategory.module').then(m => m.SubcategoryModule)
       },
+      {
+        path: 'brand',
+        loadChildren: ()=> import('./brand/brand.module').then(m => m.BrandModule)
+      },
+      {
+        path: 'measurementUnit',
+        loadChildren: ()=> import('./measurement_unit/measurement_unit.module').then(m => m.Measurement_unitModule)
+      },
     ]
   },
   {
@@ -38,7 +46,7 @@ const routes: Routes = [
   //Rutas hijas
  // { path: 'login', component: LoginComponent},
   //{ path: 'navigation', loadChildren: ()=> import('./navigation/navigation.module').then(x => x.NavigationModule) },
-  //{ path: 'category', loadChildren: ()=> import('./pages/category/category.module').then(x => x.CategoryModule) },
+  //{ path: 'category', loadChildren: ()=> import('./pages/category/category.module').then(x => x.Measurement_unitModule) },
 
   //Redirecciona de ruta inexistente a ruta default
  // { path: '**', redirectTo: 'login', pathMatch: 'full'},

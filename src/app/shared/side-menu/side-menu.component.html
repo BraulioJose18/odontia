@@ -1,2 +1,99 @@
-<p>side-menu works!</p>
-<router-outlet></router-outlet>
+<mat-toolbar>
+  <button
+    mat-icon-button
+    *ngIf="sidenav.mode === 'over'"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+    <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+  </button>
+  <div class="interaction-container">
+    <div class="interaction-container__personal-information">
+      <h1>Rosa Salas</h1>
+      <span>Super Administrador</span>
+    </div>
+    <a
+      style="cursor: pointer"
+    >
+      <img
+        width="50px"
+        src="../../../assets/images/doctor.png"
+        alt="Imagen de Usuario"
+        (click)="openDropDown()"
+      />
+    </a>
+    <div
+      [ngClass]="{'dropdown-image-no-display' : !clickDropDown,
+                  'dropdown-image-display' : clickDropDown}">
+      <button class="mat-raised-button custom-button">
+        <mat-icon>logout</mat-icon>
+        <span> Cerrar Sesión </span>
+      </button>
+    </div>
+  </div>
+
+
+
+</mat-toolbar>
+<div>
+
+</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav="matSidenav">
+    <a
+      style="cursor: pointer"
+    >
+      <img
+        width="150px"
+        src="../../../assets/images/logo-odontia.png"
+        alt="Imagen de Usuario"
+
+      />
+    </a>
+    <mat-divider></mat-divider>
+    <div class="wrap-menu-details" fxLayoutAlign="row">
+      <mat-nav-list
+        class="menu-details"
+        style="min-width: 210px; color: white">
+        <a
+          style="color: white"
+          mat-list-item
+          [routerLink]="'category/list'"
+        >
+          <mat-icon aria-label="" class="sidebar-mat-icon">work</mat-icon>
+          Categorías
+        </a>
+        <a
+          style="color: white"
+          mat-list-item
+          [routerLink]="'subcategory/list'"
+        >
+          <mat-icon aria-label="" class="sidebar-mat-icon">work</mat-icon>
+          Subcategorías
+        </a>
+        <a
+          style="color: white"
+          mat-list-item
+          [routerLink]="'measurementUnit/list'"
+        >
+          <mat-icon aria-label="" class="sidebar-mat-icon">work</mat-icon>
+          Unidades de Medida
+        </a>
+        <a
+          style="color: white"
+          mat-list-item
+          [routerLink]="'brand/list'"
+        >
+          <mat-icon aria-label="" class="sidebar-mat-icon">work</mat-icon>
+          Marca
+        </a>
+      </mat-nav-list>
+    </div>
+
+  </mat-sidenav>
+  <mat-sidenav-content style="background-color: #F1F5FB;">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -3,14 +3,14 @@ import {ThemePalette} from "@angular/material/core";
 import {Category} from "../../interfaces/category.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CategoryService} from "../../services/category.service";
+import {BrandService} from "../../services/brand.service";
 
 @Component({
   selector: 'app-form-measurement-unit',
-  templateUrl: './form-category.component.html',
-  styleUrls: ['./form-category.component.scss']
+  templateUrl: './form-brand.component.html',
+  styleUrls: ['./form-brand.component.scss']
 })
-export class FormCategoryComponent implements OnInit {
+export class FormBrandComponent implements OnInit {
 
   formCategory: FormGroup
   color: ThemePalette = 'accent';
@@ -24,7 +24,7 @@ export class FormCategoryComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private  categoryService: CategoryService,
+    private  categoryService: BrandService,
     private activatedRoute: ActivatedRoute
   ) {
     this.formCategory = this.formBuilder.group({

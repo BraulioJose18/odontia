@@ -1,1 +1,60 @@
-<p>list-subcategory works!</p>
+<section class="crud-container">
+  <article class="header">
+    <h1 class="header__title-crud">Subcategorías</h1>
+    <div class="header__buttons">
+      <mat-form-field class="search-field" appearance="fill">
+        <mat-label>Buscar</mat-label>
+        <input matInput type="text">
+        <button matSuffix mat-icon-button aria-label="Clear">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+      <button mat-raised-button class="add-button" (click)="crearActualizar()">
+        Agregar Subcategoría
+        <mat-icon
+          style="cursor: pointer"
+        >
+          add
+        </mat-icon>
+      </button>
+    </div>
+  </article>
+  <article class="content">
+    <table mat-table [dataSource]="subcategories" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="width-column"> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element"> {{element.status ? 'Activo' : 'Inactivo'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button matTooltip="Editar Subcategoría" class="edit-button">
+            <mat-icon
+              style="cursor: pointer"
+            >
+              edit
+            </mat-icon>
+          </button>
+          <button mat-raised-button matTooltip="Eliminar Subcategoría" class="delete-button">
+            <mat-icon
+              style="cursor: pointer"
+            >
+              delete
+            </mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </article>
+</section>
+
+

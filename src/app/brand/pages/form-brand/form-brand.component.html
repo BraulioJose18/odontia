@@ -1,13 +1,13 @@
 <section class="form-container">
   <article class="form-container-box">
     <div class="form-container-box__header">
-      <h1>Agregar Categoría
+      <h1>Agregar Marca
       </h1>
     </div>
     <form [formGroup]="formCategory" (ngSubmit)="saveChanges()">
       <div class="form-container-box__body">
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
-          <mat-label>Categoría</mat-label>
+          <mat-label>Marca</mat-label>
           <input type="text" matInput placeholder="Ex. Medicina" formControlName="name">
         </mat-form-field>
         <mat-slide-toggle

@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ListCategoryComponent } from './pages/list-category/list-category.component';
 import { FormCategoryComponent } from './pages/form-category/form-category.component';
 import {CategoryRoutingModule} from "./category-routing.module";
-import { HomeCategoryComponent } from './pages/home-category/home-category.component';
 import {MaterialModule} from "../material/material.module";
+import { HomeCategoryComponent } from './pages/home-category/home-category.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -12,12 +13,13 @@ import {MaterialModule} from "../material/material.module";
   declarations: [
     ListCategoryComponent,
     FormCategoryComponent,
-    HomeCategoryComponent
+    HomeCategoryComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    CategoryRoutingModule
+    CategoryRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class CategoryModule { }

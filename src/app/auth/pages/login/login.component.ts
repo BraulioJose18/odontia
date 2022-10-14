@@ -25,9 +25,7 @@ export class LoginComponent implements OnInit {
   }
   login(){
     const user = this.formLogin.value;
-    this.router.navigate(['navigation']);
-    console.log(user);
-
+    this.router.navigate(['admin/category/list']);
   }
 
 }

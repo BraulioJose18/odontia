@@ -8,13 +8,11 @@ import { HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import {SharedModule} from "./shared/shared.module";
-import { AdminNavigationComponent } from './navigation/admin-navigation/admin-navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorPageComponent,
-    AdminNavigationComponent,
   ],
   imports: [
     BrowserModule,

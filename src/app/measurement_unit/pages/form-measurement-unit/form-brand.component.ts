@@ -1,30 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
-import {Category} from "../../interfaces/category.interface";
+import {measurementUnit} from "../../interfaces/category.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {CategoryService} from "../../services/category.service";
+import {MeasurementUnitService} from "../../services/measurement.unit.service";
 
 @Component({
   selector: 'app-form-measurement-unit',
-  templateUrl: './form-category.component.html',
-  styleUrls: ['./form-category.component.scss']
+  templateUrl: './form-brand.component.html',
+  styleUrls: ['./form-brand.component.scss']
 })
-export class FormCategoryComponent implements OnInit {
+export class FormBrandComponent implements OnInit {
 
   formCategory: FormGroup
   color: ThemePalette = 'accent';
   checked = false;
   disabled = false;
-  category: Category ={
-    name: '',
-    status: true
-  }
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private  categoryService: CategoryService,
+    private  categoryService: MeasurementUnitService,
     private activatedRoute: ActivatedRoute
   ) {
     this.formCategory = this.formBuilder.group({

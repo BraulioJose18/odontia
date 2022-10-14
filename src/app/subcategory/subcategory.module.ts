@@ -4,6 +4,8 @@ import { ListSubcategoryComponent } from './pages/list-subcategory/list-subcateg
 import { FormSubcategoryComponent } from './pages/form-subcategory/form-subcategory.component';
 import { HomeSubcategoryComponent } from './pages/home-subcategory/home-subcategory.component';
 import {SubcategoryRoutingModule} from "./subcategory-routing.module";
+import {MaterialModule} from "../material/material.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -15,7 +17,9 @@ import {SubcategoryRoutingModule} from "./subcategory-routing.module";
   ],
   imports: [
     CommonModule,
-    SubcategoryRoutingModule
+    SubcategoryRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule
   ]
 })
 export class SubcategoryModule { }

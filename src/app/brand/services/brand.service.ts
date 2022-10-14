@@ -6,8 +6,8 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
-  private baseUrl: string = 'http://127.0.0.1:8000/api/category/'
+export class BrandService {
+  private baseUrl: string = 'http://127.0.0.1:8000/api/brand/'
   constructor(
     private http: HttpClient
   ) {

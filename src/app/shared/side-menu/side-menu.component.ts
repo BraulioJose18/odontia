@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
+  clickDropDown: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  openDropDown(){
+    this.clickDropDown = !this.clickDropDown
+    console.log(this.clickDropDown);
+  }
 }

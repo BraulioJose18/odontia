@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import {CategoryService} from "../../services/category.service";
+import {BrandService} from "../../services/brand.service";
 import {Category} from "../../interfaces/category.interface";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-list-measurement-unit',
-  templateUrl: './list-category.component.html',
-  styleUrls: ['./list-category.component.scss']
+  templateUrl: './list-brand.component.html',
+  styleUrls: ['./list-brand.component.scss']
 })
-export class ListCategoryComponent implements OnInit {
+export class ListBrandComponent implements OnInit {
 
   categories: Category[] = [];
   displayedColumns: string[] = ['name', 'status', 'actions'];
 
   constructor(
-    private categoryService: CategoryService,
+    private categoryService: BrandService,
     private router: Router
   ) {}
 
@@ -26,7 +26,7 @@ export class ListCategoryComponent implements OnInit {
   }
   crearActualizar() {
     console.log("Prueba")
-    this.router.navigate(['admin/category/add']);
+    this.router.navigate(['admin/brand/add']);
   }
 
 }
