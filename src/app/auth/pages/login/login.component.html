@@ -1,0 +1,24 @@
+<section class="login-container">
+  <article class="left-container">
+    <img src="../../../assets/images/logo-odontia.png" alt="Logo Odontia">
+  </article>
+  <article class="right-container">
+    <div class="right-container__header">
+      <h1>Bienvenido</h1>
+      <span>Iniciar Sesión</span>
+    </div>
+    <div class="right-container__inputs">
+      <form [formGroup]="formLogin" (ngSubmit)="login()">
+        <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+          <mat-label>Usuario</mat-label>
+          <input type="text" matInput placeholder="Ex. Admin" formControlName="user">
+        </mat-form-field>
+        <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+          <mat-label>Contraseña</mat-label>
+          <input type="password" matInput placeholder="Ex. *****" formControlName="password">
+        </mat-form-field>
+        <button mat-raised-button class="right-container__inputs__custom-button" type="submit" [disabled]="formLogin.invalid">Iniciar Sesión</button>
+      </form>
+    </div>
+  </article>
+</section>

@@ -1,0 +1,45 @@
+table {
+  width: 100%;
+}
+.crud-container {
+  height: 100%;
+  padding: 30px;
+  background-color: #F1F5FB;
+}
+.header {
+  background-color: white;
+  &__title-crud {
+    padding: 2rem 3rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #063777
+  }
+  &__buttons {
+    padding: 0 3rem 2rem;
+    display: flex;
+    justify-content: space-between;
+
+  }
+}
+.search-field {
+  width: 500px;
+}
+.edit-button {
+  background-color: #063777 ;
+  color: white;
+}
+.delete-button {
+  background-color: red ;
+  color: white;
+  margin-left: 1rem;
+}
+.add-button {
+  background-color: #063777 ;
+  color: white;
+  width: 220px;
+  height: 50px;
+  font-size: 1.2rem;
+}
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+  width: 300px !important;
+}
