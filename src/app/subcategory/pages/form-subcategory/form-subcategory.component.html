@@ -1,10 +1,13 @@
 <section class="form-container">
-  <article class="form-container-box">
+  <article
+    class="form-container-box"
+    [ngClass]="{'padding-form-box' : !isDialogSub}"
+  >
     <div class="form-container-box__header">
       <h1>Agregar Subcategoría
       </h1>
     </div>
-    <form [formGroup]="formSubcategory" (ngSubmit)="saveChanges()">
+    <form [formGroup]="formSubcategory">
       <div class="form-container-box__body">
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
           <mat-label>Subcategoría</mat-label>
@@ -20,20 +23,19 @@
               </ng-container>
             </mat-select>
           </mat-form-field>
-          <button mat-raised-button class="add-button" type="submit">
+          <button mat-raised-button class="add-button" (click)="openAddCategory()">
             Agregar Categoría
           </button>
         </div>
         <mat-slide-toggle
           class="example-margin"
-          [color]="color"
+          color="primary"
           [checked]="checked">
           Estado
         </mat-slide-toggle>
-        <app-form-category></app-form-category>
       </div>
       <div class="form-container-box__actions">
-        <button mat-raised-button class="add-button" type="submit">
+        <button mat-raised-button class="add-button" type="submit" (click)="saveChanges()">
           Guardar Cambios
         </button>
       </div>

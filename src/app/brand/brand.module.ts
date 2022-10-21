@@ -20,6 +20,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     MaterialModule,
     BrandRoutingModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    FormBrandComponent
   ]
 })
 export class BrandModule { }

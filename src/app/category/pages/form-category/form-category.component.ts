@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
 import {Category} from "../../interfaces/category.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -14,12 +14,15 @@ export class FormCategoryComponent implements OnInit {
 
   formCategory: FormGroup
   color: ThemePalette = 'accent';
-  checked = false;
+  checked = true;
   disabled = false;
   category: Category ={
     name: '',
     status: true
   }
+
+  @Input() isDialog: boolean = false;
+  @Output() envioInformacionDialog = new EventEmitter<Object>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,16 +37,21 @@ export class FormCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log(this.isDialog);
   }
   saveChanges(){
     const category = this.formCategory.value;
     category.status = true
-    console.log(category)
     this.categoryService.addCategory(category)
       .subscribe(resp => {
         console.log('Respuesta', resp);
-        this.router.navigate(['admin/category/list']);
+        if(this.isDialog) {
+          console.log("Es dialogo")
+          this.envioInformacionDialog.emit(resp);
+        }else {
+          console.log("Es ventana normal")
+          this.router.navigate(['admin/category/list']);
+        }
       });
   }
 

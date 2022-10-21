@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
 import {MeasurementUnit} from "../../interfaces/measurement.unit.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -14,17 +14,19 @@ export class FormMeasurementUnitComponent implements OnInit {
 
   formCategory: FormGroup
   color: ThemePalette = 'accent';
-  checked = false;
+  checked = true;
   disabled = false;
-
+  @Input() isDialog: boolean = false;
+  @Output() envioInformacionDialog = new EventEmitter<Object>();
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private  categoryService: MeasurementUnitService,
+    private  measurementUnitService: MeasurementUnitService,
     private activatedRoute: ActivatedRoute
   ) {
     this.formCategory = this.formBuilder.group({
       name: ['', Validators.required],
+      symbol: ['', Validators.required],
       status: ['', Validators.required]
     })
   }
@@ -36,10 +38,16 @@ export class FormMeasurementUnitComponent implements OnInit {
     const measurementUnit = this.formCategory.value;
     measurementUnit.status = true
     console.log(measurementUnit)
-    this.categoryService.addMeasurementUnit(measurementUnit)
+    this.measurementUnitService.addMeasurementUnit(measurementUnit)
       .subscribe(resp => {
         console.log('Respuesta', resp);
-        this.router.navigate(['admin/category/list']);
+        if(this.isDialog) {
+          console.log("Es dialogo")
+          this.envioInformacionDialog.emit(resp);
+        }else {
+          console.log("Es ventana normal")
+          this.router.navigate(['admin/measurementUnit/list']);
+        }
       });
   }
 

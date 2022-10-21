@@ -7,12 +7,16 @@
     <form [formGroup]="formCategory" (ngSubmit)="saveChanges()">
       <div class="form-container-box__body">
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
-          <mat-label>Categoría</mat-label>
-          <input type="text" matInput placeholder="Ex. Medicina" formControlName="name">
+          <mat-label>Unidad de Medida</mat-label>
+          <input type="text" matInput placeholder="Ex. Mililitro" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+          <mat-label>Simbolo</mat-label>
+          <input type="text" matInput placeholder="Ex. mm" formControlName="symbol">
         </mat-form-field>
         <mat-slide-toggle
           class="example-margin"
-          [color]="color"
+          color="primary"
           [checked]="checked">
           Estado
         </mat-slide-toggle>

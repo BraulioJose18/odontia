@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
 import {Brand} from "../../interfaces/Brand";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {BrandService} from "../../services/brand.service";
 
 @Component({
-  selector: 'app-form-measurement-unit',
+  selector: 'app-form-brand',
   templateUrl: './form-brand.component.html',
   styleUrls: ['./form-brand.component.scss']
 })
@@ -14,12 +14,14 @@ export class FormBrandComponent implements OnInit {
 
   formCategory: FormGroup
   color: ThemePalette = 'accent';
-  checked = false;
+  checked = true;
   disabled = false;
   category: Brand ={
     name: '',
     status: true
   }
+  @Input() isDialog: boolean = false;
+  @Output() envioInformacionDialog = new EventEmitter<Object>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,7 +45,14 @@ export class FormBrandComponent implements OnInit {
     this.categoryService.addBrand(brand)
       .subscribe(resp => {
         console.log('Respuesta', resp);
-        this.router.navigate(['admin/category/list']);
+        if(this.isDialog) {
+          console.log("Es dialogo")
+          this.envioInformacionDialog.emit(resp);
+        }else {
+          console.log("Es ventana normal")
+          this.router.navigate(['admin/brand/list']);
+        }
+
       });
   }
 

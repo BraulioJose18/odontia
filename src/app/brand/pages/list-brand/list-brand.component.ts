@@ -4,7 +4,7 @@ import {Brand} from "../../interfaces/Brand";
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'app-list-measurement-unit',
+  selector: 'app-list-product',
   templateUrl: './list-brand.component.html',
   styleUrls: ['./list-brand.component.scss']
 })

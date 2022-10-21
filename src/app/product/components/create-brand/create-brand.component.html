@@ -1,0 +1,6 @@
+<h1 mat-dialog-title style="text-align: right">
+  <mat-icon mat-dialog-close style="cursor: pointer"> close </mat-icon>
+</h1>
+<div mat-dialog-content>
+  <app-form-brand [isDialog]="true" (envioInformacionDialog)="saveChanges($event)"></app-form-brand>
+</div>

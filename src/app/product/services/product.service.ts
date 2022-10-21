@@ -12,13 +12,13 @@ export class ProductService {
     private http: HttpClient
   ) {
   }
-  getCategory(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl)
   }
-  getCategoryById(id: string): Observable<Product[]> {
+  getProductById(id: string): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl+id)
   }
-  addCategory(category: Product): Observable<Product> {
-    return this.http.post<Product>(this.baseUrl,category)
+  addProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(this.baseUrl,product)
   }
 }

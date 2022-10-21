@@ -1,5 +1,8 @@
 <section class="form-container">
-  <article class="form-container-box">
+  <article
+    class="form-container-box"
+    [ngClass]="{'padding-form-box' : !isDialog}"
+  >
     <div class="form-container-box__header">
       <h1>Agregar Categoría
       </h1>
@@ -12,7 +15,7 @@
         </mat-form-field>
         <mat-slide-toggle
           class="example-margin"
-          [color]="color"
+          color="primary"
           [checked]="checked">
           Estado
         </mat-slide-toggle>

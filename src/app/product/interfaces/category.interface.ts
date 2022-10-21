@@ -1,3 +1,7 @@
+import {MeasurementUnit} from "../../measurement_unit/interfaces/measurement.unit.interface";
+import {Subcategory} from "../../subcategory/interfaces/subcategory.interface";
+import {Brand} from "../../brand/interfaces/Brand";
+
 export interface Product {
   id?:              number;
   name:            string;
@@ -7,7 +11,7 @@ export interface Product {
   specifications:  string;
   observation:     string;
   stock:           number;
-  subcategory:     number;
-  measurementUnit: number;
-  brand:           number;
+  subcategory:     Subcategory;
+  measurementUnit: MeasurementUnit;
+  brand:           Brand;
 }

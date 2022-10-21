@@ -4,7 +4,7 @@
     <div class="header__buttons">
       <mat-form-field class="search-field" appearance="fill">
         <mat-label>Buscar</mat-label>
-        <input matInput type="text">
+        <input matInput type="text"  (keyup)="applyFilter($event)">
         <button matSuffix mat-icon-button aria-label="Clear">
           <mat-icon>search</mat-icon>
         </button>
@@ -20,34 +20,46 @@
     </div>
   </article>
   <article class="content">
-    <table mat-table [dataSource]="categories" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef class="width-column"> Nombre </th>
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Nombre </th>
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
       </ng-container>
+      <ng-container matColumnDef="subcategory">
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Subcategoría </th>
+        <td mat-cell *matCellDef="let element"> {{element.subcategory.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="brand">
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Marca </th>
+        <td mat-cell *matCellDef="let element"> {{element.brand.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="measurementUnit">
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Unidad de Medida </th>
+        <td mat-cell *matCellDef="let element"> {{element.measurementUnit.name}} </td>
+      </ng-container>
       <ng-container matColumnDef="salePrice">
-        <th mat-header-cell *matHeaderCellDef class="width-column"> Precio de Venta </th>
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Precio de Venta </th>
         <td mat-cell *matCellDef="let element"> {{element.salePrice}} </td>
       </ng-container>
       <ng-container matColumnDef="purchasePrice">
-        <th mat-header-cell *matHeaderCellDef class="width-column"> Precio de Compra </th>
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Precio de Compra </th>
         <td mat-cell *matCellDef="let element"> {{element.purchasePrice}} </td>
       </ng-container>
       <ng-container matColumnDef="specifications">
-        <th mat-header-cell *matHeaderCellDef class="width-column"> Especificaciones </th>
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Especificaciones </th>
         <td mat-cell *matCellDef="let element"> {{element.specifications}} </td>
       </ng-container>
       <ng-container matColumnDef="observation">
-        <th mat-header-cell *matHeaderCellDef class="width-column"> Observaciones </th>
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Observaciones </th>
         <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
       </ng-container>
       <ng-container matColumnDef="stock">
-        <th mat-header-cell *matHeaderCellDef class="width-column"> Stock </th>
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Stock </th>
         <td mat-cell *matCellDef="let element"> {{element.stock}} </td>
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
         <td mat-cell *matCellDef="let element"> {{element.status ? 'Activo' : 'Inactivo'}} </td>
       </ng-container>
 
@@ -74,6 +86,10 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
   </article>
 </section>
 

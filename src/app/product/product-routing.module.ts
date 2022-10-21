@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import {ListBrandComponent} from "./pages/list-measurement-unit/list-brand.component";
-import {FormBrandComponent} from "./pages/form-measurement-unit/form-brand.component";
-import {HomeBrandComponent} from "./pages/home-measurement-unit/home-brand.component";
+import {ListProductComponent} from "./pages/list-product/list-product.component";
+import {FormProductComponent} from "./pages/form-product/form-product.component";
+import {HomeProductComponent} from "./pages/home-product/home-product.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeBrandComponent,
+    component: HomeProductComponent,
     children: [
       {
         path: 'list',
-        component: ListBrandComponent
+        component: ListProductComponent
       },
       {
         path: 'add',
-        component: FormBrandComponent
+        component: FormProductComponent
       },
       {
         path: 'edit/:id',
-        component: FormBrandComponent
+        component: FormProductComponent
       }
     ]
   }

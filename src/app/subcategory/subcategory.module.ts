@@ -6,6 +6,8 @@ import { HomeSubcategoryComponent } from './pages/home-subcategory/home-subcateg
 import {SubcategoryRoutingModule} from "./subcategory-routing.module";
 import {MaterialModule} from "../material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
+import {CategoryModule} from "../category/category.module";
+import { CreateCategoryComponent } from './components/create-category/create-category.component';
 
 
 
@@ -13,13 +15,21 @@ import {ReactiveFormsModule} from "@angular/forms";
   declarations: [
     ListSubcategoryComponent,
     FormSubcategoryComponent,
-    HomeSubcategoryComponent
+    HomeSubcategoryComponent,
+    CreateCategoryComponent
   ],
-  imports: [
-    CommonModule,
-    SubcategoryRoutingModule,
-    MaterialModule,
-    ReactiveFormsModule
+    imports: [
+        CommonModule,
+        SubcategoryRoutingModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        CategoryModule
+    ],
+  exports: [
+    FormSubcategoryComponent
+  ],
+  entryComponents: [
+    CreateCategoryComponent
   ]
 })
 export class SubcategoryModule { }

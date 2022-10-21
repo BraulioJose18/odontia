@@ -20,6 +20,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     MaterialModule,
     MeasurementUnitRoutingModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    FormMeasurementUnitComponent
   ]
 })
 export class MeasurementUnitModule { }
