@@ -20,6 +20,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     MaterialModule,
     CategoryRoutingModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    FormCategoryComponent,
   ]
 })
 export class CategoryModule { }

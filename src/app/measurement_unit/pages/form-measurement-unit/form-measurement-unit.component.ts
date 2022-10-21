@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
-import {measurementUnit} from "../../interfaces/category.interface";
+import {MeasurementUnit} from "../../interfaces/measurement.unit.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MeasurementUnitService} from "../../services/measurement.unit.service";
 
 @Component({
   selector: 'app-form-measurement-unit',
-  templateUrl: './form-brand.component.html',
-  styleUrls: ['./form-brand.component.scss']
+  templateUrl: './form-measurement-unit.component.html',
+  styleUrls: ['./form-measurement-unit.component.scss']
 })
-export class FormBrandComponent implements OnInit {
+export class FormMeasurementUnitComponent implements OnInit {
 
   formCategory: FormGroup
   color: ThemePalette = 'accent';
@@ -33,10 +33,10 @@ export class FormBrandComponent implements OnInit {
 
   }
   saveChanges(){
-    const category = this.formCategory.value;
-    category.status = true
-    console.log(category)
-    this.categoryService.addCategory(category)
+    const measurementUnit = this.formCategory.value;
+    measurementUnit.status = true
+    console.log(measurementUnit)
+    this.categoryService.addMeasurementUnit(measurementUnit)
       .subscribe(resp => {
         console.log('Respuesta', resp);
         this.router.navigate(['admin/category/list']);

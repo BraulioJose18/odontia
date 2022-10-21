@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CategoryService} from "../../services/category.service";
 
 @Component({
-  selector: 'app-form-measurement-unit',
+  selector: 'app-form-category',
   templateUrl: './form-category.component.html',
   styleUrls: ['./form-category.component.scss']
 })

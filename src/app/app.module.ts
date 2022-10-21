@@ -8,7 +8,6 @@ import { HttpClientModule} from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import {SharedModule} from "./shared/shared.module";
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +18,7 @@ import {SharedModule} from "./shared/shared.module";
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
 
   ],
   providers: [],

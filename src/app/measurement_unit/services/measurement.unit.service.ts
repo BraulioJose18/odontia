@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {measurementUnit} from "../interfaces/category.interface";
+import {MeasurementUnit} from "../interfaces/measurement.unit.interface";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -12,13 +12,13 @@ export class MeasurementUnitService {
     private http: HttpClient
   ) {
   }
-  getCategory(): Observable<measurementUnit[]> {
-    return this.http.get<measurementUnit[]>(this.baseUrl)
+  getMeasurementUnit(): Observable<MeasurementUnit[]> {
+    return this.http.get<MeasurementUnit[]>(this.baseUrl)
   }
-  getCategoryById(id: string): Observable<measurementUnit[]> {
-    return this.http.get<measurementUnit[]>(this.baseUrl+id)
+  getMeasurementUnitById(id: string): Observable<MeasurementUnit[]> {
+    return this.http.get<MeasurementUnit[]>(this.baseUrl+id)
   }
-  addCategory(category: measurementUnit): Observable<measurementUnit> {
-    return this.http.post<measurementUnit>(this.baseUrl,category)
+  addMeasurementUnit(category: MeasurementUnit): Observable<MeasurementUnit> {
+    return this.http.post<MeasurementUnit>(this.baseUrl,category)
   }
 }

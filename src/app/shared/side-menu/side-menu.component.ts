@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { faRuler } from '@fortawesome/free-solid-svg-icons';
+import { faTeeth } from '@fortawesome/free-solid-svg-icons';
+import { faTooth } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-side-menu',
@@ -8,6 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class SideMenuComponent implements OnInit {
 
   clickDropDown: boolean = false;
+  faRuler = faRuler;
+  faTeeth = faTeeth;
+  faTooth = faTooth;
   constructor() { }
 
   ngOnInit(): void {

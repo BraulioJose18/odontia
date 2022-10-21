@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {SideMenuComponent} from "./side-menu/side-menu.component";
 import {RouterModule} from "@angular/router";
 import {MaterialModule} from "../material/material.module";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 
@@ -14,7 +15,8 @@ import {MaterialModule} from "../material/material.module";
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    FontAwesomeModule
 
   ],
   exports: [

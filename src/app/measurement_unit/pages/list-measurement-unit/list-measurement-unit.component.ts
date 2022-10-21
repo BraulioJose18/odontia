@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {MeasurementUnitService} from "../../services/measurement.unit.service";
 import {Router} from "@angular/router";
-import {measurementUnit} from "../../interfaces/category.interface";
+import {MeasurementUnit} from "../../interfaces/measurement.unit.interface";
 
 @Component({
   selector: 'app-list-measurement-unit',
-  templateUrl: './list-brand.component.html',
-  styleUrls: ['./list-brand.component.scss']
+  templateUrl: './list-measurement-unit.component.html',
+  styleUrls: ['./list-measurement-unit.component.scss']
 })
-export class ListBrandComponent implements OnInit {
+export class ListMeasurementUnitComponent implements OnInit {
 
-  categories: measurementUnit[] = [];
+  measurementUnit: MeasurementUnit[] = [];
   displayedColumns: string[] = ['name', 'symbol','status', 'actions'];
 
   constructor(
@@ -19,10 +19,10 @@ export class ListBrandComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.getCategory()
-      .subscribe((categories =>{
-        console.log(categories)
-        this.categories = categories
+    this.categoryService.getMeasurementUnit()
+      .subscribe((measurementUnit =>{
+        console.log(measurementUnit)
+        this.measurementUnit = measurementUnit
       }));
   }
   crearActualizar() {

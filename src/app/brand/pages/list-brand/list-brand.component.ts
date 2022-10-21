@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {BrandService} from "../../services/brand.service";
-import {Category} from "../../interfaces/category.interface";
+import {Brand} from "../../interfaces/Brand";
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class ListBrandComponent implements OnInit {
 
-  categories: Category[] = [];
+  brands: Brand[] = [];
   displayedColumns: string[] = ['name', 'status', 'actions'];
 
   constructor(
@@ -19,9 +19,9 @@ export class ListBrandComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.getCategory()
-      .subscribe((categories =>{
-        this.categories = categories
+    this.categoryService.getBrand()
+      .subscribe((brands =>{
+        this.brands = brands
       }));
   }
   crearActualizar() {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Category} from "../interfaces/category.interface";
+import {Brand} from "../interfaces/Brand";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -12,13 +12,13 @@ export class BrandService {
     private http: HttpClient
   ) {
   }
-  getCategory(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.baseUrl)
+  getBrand(): Observable<Brand[]> {
+    return this.http.get<Brand[]>(this.baseUrl)
   }
-  getCategoryById(id: string): Observable<Category[]> {
-    return this.http.get<Category[]>(this.baseUrl+id)
+  getBrandById(id: string): Observable<Brand[]> {
+    return this.http.get<Brand[]>(this.baseUrl+id)
   }
-  addCategory(category: Category): Observable<Category> {
-    return this.http.post<Category>(this.baseUrl,category)
+  addBrand(category: Brand): Observable<Brand> {
+    return this.http.post<Brand>(this.baseUrl,category)
   }
 }

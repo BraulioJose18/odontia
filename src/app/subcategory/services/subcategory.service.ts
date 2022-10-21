@@ -18,7 +18,7 @@ export class SubcategoryService {
   getSubcategoryById(id: string): Observable<Subcategory[]> {
     return this.http.get<Subcategory[]>(this.baseUrl+id)
   }
-  addSubcategory(category: Subcategory): Observable<Subcategory> {
-    return this.http.post<Subcategory>(this.baseUrl,category)
+  addSubcategory(subcategory: any): Observable<any> {
+    return this.http.post<Subcategory>(this.baseUrl,subcategory)
   }
 }

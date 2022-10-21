@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
-import {Category} from "../../interfaces/category.interface";
+import {Brand} from "../../interfaces/Brand";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {BrandService} from "../../services/brand.service";
@@ -16,7 +16,7 @@ export class FormBrandComponent implements OnInit {
   color: ThemePalette = 'accent';
   checked = false;
   disabled = false;
-  category: Category ={
+  category: Brand ={
     name: '',
     status: true
   }
@@ -37,10 +37,10 @@ export class FormBrandComponent implements OnInit {
 
   }
   saveChanges(){
-    const category = this.formCategory.value;
-    category.status = true
-    console.log(category)
-    this.categoryService.addCategory(category)
+    const brand = this.formCategory.value;
+    brand.status = true
+    console.log(brand)
+    this.categoryService.addBrand(brand)
       .subscribe(resp => {
         console.log('Respuesta', resp);
         this.router.navigate(['admin/category/list']);

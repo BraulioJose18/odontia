@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'measurementUnit',
-        loadChildren: ()=> import('./measurement_unit/measurement_unit.module').then(m => m.Measurement_unitModule)
+        loadChildren: ()=> import('./measurement_unit/measurement-unit.module').then(m => m.MeasurementUnitModule)
       },
       {
         path: 'product',

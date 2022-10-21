@@ -10,6 +10,10 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatListModule} from "@angular/material/list";
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   exports: [
@@ -22,7 +26,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDividerModule,
     MatListModule,
     MatToolbarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }
