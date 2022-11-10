@@ -3,11 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule} from "@angular/common/http";
+import { HttpClientModule,  HTTP_INTERCEPTORS,
+  HttpClient} from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import {SharedModule} from "./shared/shared.module";
+
+import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +25,7 @@ import {SharedModule} from "./shared/shared.module";
     SharedModule,
 
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

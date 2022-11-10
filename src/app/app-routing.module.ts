@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {ErrorPageComponent} from "./shared/error-page/error-page.component";
 import {SideMenuComponent} from "./shared/side-menu/side-menu.component";
-import {ProductModule} from "./product/product.module";
+import {AuthGuard} from "./core/guard/auth.guard";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'auth/login', pathMatch: 'full'},
+  { path: '',
+    redirectTo: 'auth/login',
+    pathMatch: 'full'
+  },
   {
     path: 'auth',
     loadChildren: ()=> import('./auth/auth.module').then(m => m.AuthModule)
@@ -13,6 +16,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: SideMenuComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'category',
@@ -34,6 +38,10 @@ const routes: Routes = [
         path: 'product',
         loadChildren: ()=> import('./product/product.module').then(m => m.ProductModule)
       },
+      {
+        path: 'voucherType',
+        loadChildren: ()=> import('./voucher_type/voucher-type.module').then(m => m.VoucherTypeModule)
+      },
     ]
   },
   {
@@ -45,16 +53,6 @@ const routes: Routes = [
     redirectTo: 'errorPage',
     pathMatch: 'full'
   },
-
-  //{ path: '', redirectTo: 'login', pathMatch: 'full'},
-
-  //Rutas hijas
- // { path: 'login', component: LoginComponent},
-  //{ path: 'navigation', loadChildren: ()=> import('./navigation/navigation.module').then(x => x.NavigationModule) },
-  //{ path: 'category', loadChildren: ()=> import('./pages/category/category.module').then(x => x.ProductModule) },
-
-  //Redirecciona de ruta inexistente a ruta default
- // { path: '**', redirectTo: 'login', pathMatch: 'full'},
 
 ];
 
