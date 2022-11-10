@@ -26,12 +26,12 @@ export class ListVoucherTypeComponent implements OnInit {
 
   ngOnInit(): void {
     this.voucherTypeService.getListVoucherType()
-      .subscribe((vucherTypes =>{
-        this.listVoucherType = vucherTypes
+      .subscribe((vucherTypes) =>{
+        this.listVoucherType = vucherTypes.results;
         this.dataSource = new MatTableDataSource(this.listVoucherType);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }));
+      });
   }
   crearActualizar() {
     this.router.navigate(['admin/voucherType/add']);

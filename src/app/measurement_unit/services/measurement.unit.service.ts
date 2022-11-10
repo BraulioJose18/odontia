@@ -12,8 +12,8 @@ export class MeasurementUnitService {
     private http: HttpClient
   ) {
   }
-  getMeasurementUnit(): Observable<MeasurementUnit[]> {
-    return this.http.get<MeasurementUnit[]>(this.baseUrl)
+  getMeasurementUnit(): Observable<any> {
+    return this.http.get<any>(this.baseUrl)
   }
   getMeasurementUnitById(id: string): Observable<MeasurementUnit[]> {
     return this.http.get<MeasurementUnit[]>(this.baseUrl+id)

@@ -21,8 +21,7 @@ export class ListMeasurementUnitComponent implements OnInit {
   ngOnInit(): void {
     this.categoryService.getMeasurementUnit()
       .subscribe((measurementUnit =>{
-        console.log(measurementUnit)
-        this.measurementUnit = measurementUnit
+        this.measurementUnit = measurementUnit.results
       }));
   }
   crearActualizar() {

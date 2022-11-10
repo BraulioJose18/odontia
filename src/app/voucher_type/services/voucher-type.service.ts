@@ -12,8 +12,8 @@ export class VoucherTypeService {
     private http: HttpClient
   ) {
   }
-  getListVoucherType(): Observable<VoucherType[]> {
-    return this.http.get<VoucherType[]>(this.baseUrl)
+  getListVoucherType(): Observable<any> {
+    return this.http.get<any>(this.baseUrl)
   }
   getVoucherTypeById(id: string): Observable<VoucherType[]> {
     return this.http.get<VoucherType[]>(this.baseUrl+id)

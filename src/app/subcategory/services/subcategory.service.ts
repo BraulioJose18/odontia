@@ -12,8 +12,8 @@ export class SubcategoryService {
     private http: HttpClient
   ) {
   }
-  getSubcategory(): Observable<Subcategory[]> {
-    return this.http.get<Subcategory[]>(this.baseUrl)
+  getSubcategory(): Observable<any> {
+    return this.http.get<any>(this.baseUrl)
   }
   getSubcategoryById(id: string): Observable<Subcategory[]> {
     return this.http.get<Subcategory[]>(this.baseUrl+id)

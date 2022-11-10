@@ -12,8 +12,8 @@ export class BrandService {
     private http: HttpClient
   ) {
   }
-  getBrand(): Observable<Brand[]> {
-    return this.http.get<Brand[]>(this.baseUrl)
+  getBrand(): Observable<any> {
+    return this.http.get<any>(this.baseUrl)
   }
   getBrandById(id: string): Observable<Brand[]> {
     return this.http.get<Brand[]>(this.baseUrl+id)

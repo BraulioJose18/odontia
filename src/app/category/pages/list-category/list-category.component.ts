@@ -27,12 +27,12 @@ export class ListCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getCategory()
-      .subscribe((categories =>{
-        this.categories = categories
+      .subscribe((categories) =>{
+        this.categories = categories.results
         this.dataSource = new MatTableDataSource(this.categories);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }));
+      });
   }
   crearActualizar() {
     console.log("Prueba")

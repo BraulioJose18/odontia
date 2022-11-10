@@ -12,8 +12,8 @@ export class UserService {
     private http: HttpClient
   ) {
   }
-  getListUser(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl)
+  getListUser(): Observable<any> {
+    return this.http.get<any>(this.baseUrl)
   }
   getUserById(id: string): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl+id)

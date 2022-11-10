@@ -42,6 +42,14 @@ const routes: Routes = [
         path: 'voucherType',
         loadChildren: ()=> import('./voucher_type/voucher-type.module').then(m => m.VoucherTypeModule)
       },
+      {
+        path: 'user',
+        loadChildren: ()=> import('./user/user.module').then(m => m.UserModule)
+      },
+      {
+        path: 'permission',
+        loadChildren: ()=> import('./permission/permission.module').then(m => m.PermissionModule)
+      },
     ]
   },
   {

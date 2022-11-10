@@ -1,0 +1,30 @@
+<section class="form-container">
+  <article
+    class="form-container-box"
+    [ngClass]="{'padding-form-box' : !isDialog}"
+  >
+    <div class="form-container-box__header">
+      <h1>Agregar Permiso
+      </h1>
+    </div>
+    <form [formGroup]="formPermission" (ngSubmit)="saveChanges()">
+      <div class="form-container-box__body">
+        <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+          <mat-label>Ruta</mat-label>
+          <input type="text" matInput placeholder="Ex. /category" formControlName="path">
+        </mat-form-field>
+        <mat-slide-toggle
+          class="example-margin"
+          color="primary"
+          [checked]="checked">
+          Estado
+        </mat-slide-toggle>
+      </div>
+      <div class="form-container-box__actions">
+        <button mat-raised-button class="add-button" type="submit">
+          Guardar Cambios
+        </button>
+      </div>
+    </form>
+  </article>
+</section>

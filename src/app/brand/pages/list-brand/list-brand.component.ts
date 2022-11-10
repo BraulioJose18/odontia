@@ -20,9 +20,9 @@ export class ListBrandComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getBrand()
-      .subscribe((brands =>{
-        this.brands = brands
-      }));
+      .subscribe((brands) =>{
+        this.brands = brands.results
+      });
   }
   crearActualizar() {
     console.log("Prueba")

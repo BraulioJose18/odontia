@@ -29,8 +29,7 @@ export class ListSubcategoryComponent implements OnInit {
   ngOnInit(): void {
     this.subcategoryService.getSubcategory()
       .subscribe((subcategories =>{
-        console.log(subcategories)
-        this.subcategories = subcategories
+        this.subcategories = subcategories.results
         this.dataSource = new MatTableDataSource(this.subcategories);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

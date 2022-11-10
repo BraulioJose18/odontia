@@ -30,13 +30,12 @@ export class ListProductComponent implements OnInit {
   }
   getProducts(){
     this.productService.getProducts()
-      .subscribe((products =>{
-        console.log(products)
-        this.products = products
+      .subscribe((products) =>{
+        this.products = products.results
         this.dataSource = new MatTableDataSource(this.products);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }));
+      });
   }
   crearActualizar() {
     console.log("Prueba")

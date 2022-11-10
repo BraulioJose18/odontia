@@ -1,31 +1,24 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
-import {User} from "../../interfaces/user.interface";
+import {Permission} from "../../interfaces/permission.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {UserService} from "../../services/user.service";
+import {PermissionService} from "../../services/permission.service";
 
 @Component({
-  selector: 'app-form-user',
-  templateUrl: './form-user.component.html',
-  styleUrls: ['./form-user.component.scss']
+  selector: 'app-form-permission',
+  templateUrl: './form-permission.component.html',
+  styleUrls: ['./form-permission.component.scss']
 })
-export class FormUserComponent implements OnInit {
+export class FormPermissionComponent implements OnInit {
 
-  formVoucherType: FormGroup
+  formPermission: FormGroup
   color: ThemePalette = 'accent';
   checked = true;
   disabled = false;
-  user: User ={
-    name: '',
-    last_name: '',
-    email: '',
-    address:'',
-    age: 20,
-    born_date: new Date("2022-05-20"),
-    cellphone: 999999999,
-    document_type: 1,
-    document_number: 5258744,
+  permission: Permission ={
+    path: '',
+    status: true
   }
 
   @Input() isDialog: boolean = false;
@@ -34,12 +27,11 @@ export class FormUserComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private  voucherTypeService: UserService,
+    private  permissionService: PermissionService,
     private activatedRoute: ActivatedRoute
   ) {
-    this.formVoucherType = this.formBuilder.group({
-      name: ['', Validators.required],
-      serie: ['', Validators.required],
+    this.formPermission = this.formBuilder.group({
+      path: ['', Validators.required],
       status: ['', Validators.required]
     })
   }
@@ -48,9 +40,9 @@ export class FormUserComponent implements OnInit {
     console.log(this.isDialog);
   }
   saveChanges(){
-    const user = this.formVoucherType.value;
-    user.status = true
-    this.voucherTypeService.addUser(user)
+    const permission = this.formPermission.value;
+    permission.status = true
+    this.permissionService.addPermission(permission)
       .subscribe(resp => {
         console.log('Respuesta', resp);
         if(this.isDialog) {
@@ -58,7 +50,7 @@ export class FormUserComponent implements OnInit {
           this.envioInformacionDialog.emit(resp);
         }else {
           console.log("Es ventana normal")
-          this.router.navigate(['admin/voucherType/list']);
+          this.router.navigate(['admin/permission/list']);
         }
       });
   }
