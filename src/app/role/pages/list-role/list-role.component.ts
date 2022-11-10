@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Subcategory} from "../../interfaces/subcategory.interface";
-import {SubcategoryService} from "../../services/subcategory.service";
+import {Role} from "../../interfaces/role.interface";
+import {RoleService} from "../../services/role.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import { MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -8,35 +8,35 @@ import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-list-role',
-  templateUrl: './list-subcategory.component.html',
-  styleUrls: ['./list-subcategory.component.scss']
+  templateUrl: './list-role.component.html',
+  styleUrls: ['./list-role.component.scss']
 })
-export class ListSubcategoryComponent implements OnInit {
+export class ListRoleComponent implements OnInit {
 
-  subcategories: Subcategory[] = [];
-  displayedColumns: string[] = ['name', 'category', 'status', 'actions'];
-  dataSource !: MatTableDataSource<Subcategory>;
+  roles: Role[] = [];
+  displayedColumns: string[] = ['name','status', 'actions'];
+  dataSource !: MatTableDataSource<Role>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private subcategoryService: SubcategoryService,
+    private roleService: RoleService,
     private router: Router,
     private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.subcategoryService.getSubcategory()
-      .subscribe((subcategories =>{
-        this.subcategories = subcategories.results
-        this.dataSource = new MatTableDataSource(this.subcategories);
+    this.roleService.getListRole()
+      .subscribe((roles) =>{
+        this.roles = roles.results
+        this.dataSource = new MatTableDataSource(this.roles);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-      }));
+      });
   }
   crearActualizar() {
-    this.router.navigate(['admin/subcategory/add']);
+    this.router.navigate(['admin/role/add']);
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

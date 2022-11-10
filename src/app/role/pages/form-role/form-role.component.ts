@@ -1,20 +1,20 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Category} from "../../../category/interfaces/category.interface";
-import {Subcategory} from "../../interfaces/subcategory.interface";
+import {Subcategory} from "../../interfaces/role.interface";
 import {ActivatedRoute, Router} from "@angular/router";
-import {SubcategoryService} from "../../services/subcategory.service";
+import {RoleService} from "../../services/role.service";
 import {CategoryService} from "../../../category/services/category.service";
 import {MatDialog} from "@angular/material/dialog";
-import {CreateCategoryComponent} from "../../components/create-category/create-category.component";
+import {CreatePermissionComponent} from "../../components/create-permission/create-permission.component";
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form-role',
-  templateUrl: './form-subcategory.component.html',
-  styleUrls: ['./form-subcategory.component.scss']
+  templateUrl: './form-role.component.html',
+  styleUrls: ['./form-role.component.scss']
 })
-export class FormSubcategoryComponent implements OnInit {
+export class FormRoleComponent implements OnInit {
 
   formSubcategory: FormGroup
   checked = true;
@@ -30,7 +30,7 @@ export class FormSubcategoryComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private  subcategoryService: SubcategoryService,
+    private  subcategoryService: RoleService,
     private  categoryService: CategoryService,
     private activatedRoute: ActivatedRoute,
     public dialog: MatDialog
@@ -71,7 +71,7 @@ export class FormSubcategoryComponent implements OnInit {
       });
   }
   openAddCategory(): void{
-    const dialogRef = this.dialog.open(CreateCategoryComponent, {});
+    const dialogRef = this.dialog.open(CreatePermissionComponent, {});
     dialogRef.afterClosed().subscribe(res => {
       if(res.data) {
         console.log(res);
