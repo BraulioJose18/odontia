@@ -1,8 +1,8 @@
-import {Component, Input, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
-import {Purchase, PurchaseDetail} from "../../interfaces/purchase.interface";
+import {PurchaseDetail} from "../../interfaces/purchase.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {PurchaseService} from "../../services/purchase.service";
 import {VoucherTypeService} from "../../../voucher_type/services/voucher-type.service";
 import {VoucherType} from "../../../voucher_type/interfaces/voucher.type.interface";
@@ -11,6 +11,8 @@ import {User} from "../../../user/interfaces/user.interface";
 import {MatTable} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {AddProductDetailComponent} from "../../components/add-product-detail/add-product-detail.component";
+import {DatePipe} from '@angular/common'
+
 @Component({
   selector: 'app-form-purchase',
   templateUrl: './form-purchase.component.html',
@@ -51,16 +53,18 @@ export class FormPurchaseComponent implements OnInit {
     private  purchaseService: PurchaseService,
     private voucherTypeService: VoucherTypeService,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public datepipe: DatePipe
   ) {
     this.form = this.formBuilder.group({
       voucherType: ['', Validators.required],
       user: ['', Validators.required],
-      totalPrice: ['', Validators.required],
+      //date: ['', Validators.required],
+      //totalPrice: [{value: '', disabled: true}, Validators.required],
+      totalPrice: [''],
       providerFullName: ['', Validators.required],
       providerAddress: ['', Validators.required],
     })
-    this.form.controls['totalPrice'].disable();
     this.form.controls['providerFullName'].disable();
     this.form.controls['providerAddress'].disable();
 
@@ -72,7 +76,23 @@ export class FormPurchaseComponent implements OnInit {
     this.getProviders();
   }
   saveChanges(){
-    const purchase = this.form.value;
+    //console.log(this.form.value)
+    let form = this.form.getRawValue();
+    let detailProduct = this.listDetailPurchase.map(function(value) {
+      return {
+        product: value.product.id,
+        quantity: value.quantity,
+        totalPrice: value.totalPrice,
+      }
+    });
+    const purchase = {
+      totalPrice: form.totalPrice,
+      detail: detailProduct,
+      user: form.user.id,
+      movementType: 1,
+      voucherType: form.voucherType,
+      date: this.datepipe.transform(new Date(), 'yyyy-MM-dd')
+    }
     this.purchaseService.addUser(purchase)
       .subscribe(resp => {
         console.log('Respuesta', resp);

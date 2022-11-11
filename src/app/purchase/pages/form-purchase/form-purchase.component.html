@@ -10,13 +10,13 @@
     <form [formGroup]="form">
       <div class="form-container-box__body">
 
-        <mat-form-field appearance="fill">
-          <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="picker">
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+<!--        <mat-form-field appearance="fill">-->
+<!--          <mat-label>Fecha</mat-label>-->
+<!--          <input matInput [matDatepicker]="date">-->
+<!--          <mat-hint>DD/MM/YYYY</mat-hint>-->
+<!--          <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #date></mat-datepicker>-->
+<!--        </mat-form-field>-->
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
           <mat-select
             placeholder="Tipo de Comprobante" formControlName="voucherType"
@@ -45,7 +45,7 @@
         </mat-form-field>
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
           <mat-label>Precio Total</mat-label>
-          <input type="text" matInput placeholder="0.00" formControlName="totalPrice">
+          <input type="text" matInput placeholder="0.00" formControlName="totalPrice" [readonly]="true">
         </mat-form-field>
         <button mat-raised-button class="add-button" (click)="openAddProduct()">
           Agregar Productos

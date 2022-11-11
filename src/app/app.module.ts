@@ -12,6 +12,8 @@ import {SharedModule} from "./shared/shared.module";
 
 import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
 
+import { DatePipe } from '@angular/common'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,9 @@ import { JwtInterceptor } from './core/interceptor/jwt.interceptor';
     SharedModule,
 
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+  providers: [
+    DatePipe,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

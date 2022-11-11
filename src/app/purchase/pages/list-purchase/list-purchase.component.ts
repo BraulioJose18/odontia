@@ -14,7 +14,7 @@ import {Purchase} from "../../interfaces/purchase.interface";
 export class ListPurchaseComponent implements OnInit {
 
   listPurchase: Purchase[] = [];
-  displayedColumns: string[] = ['voucherType', 'serie', 'provider', 'cellphone', 'totalPrice', 'actions'];
+  displayedColumns: string[] = ['date','voucherType', 'serie', 'provider', 'cellphone', 'totalPrice', 'actions'];
   dataSource !: MatTableDataSource<Purchase>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
