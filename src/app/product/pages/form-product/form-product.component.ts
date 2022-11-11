@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
-import {Product} from "../../interfaces/category.interface";
+import {Product} from "../../interfaces/product.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
@@ -76,7 +76,6 @@ export class FormProductComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateSubcategoryComponent, {});
     dialogRef.afterClosed().subscribe(res => {
       if(res.data) {
-        console.log(res);
         this.getSubCategories()
       }
     });
@@ -84,15 +83,13 @@ export class FormProductComponent implements OnInit {
   getSubCategories() {
     this.subcategoryService.getSubcategory()
       .subscribe((subcategories =>{
-        console.log(subcategories)
-        this.listSubcategory = subcategories
+        this.listSubcategory = subcategories.results;
       }));
   }
   openAddBrand(): void{
     const dialogRef = this.dialog.open(CreateBrandComponent, {});
     dialogRef.afterClosed().subscribe(res => {
       if(res.data) {
-        console.log(res);
         this.getBrands()
       }
     });
@@ -100,15 +97,13 @@ export class FormProductComponent implements OnInit {
   getBrands() {
     this.brandService.getBrand()
       .subscribe((brands =>{
-        console.log(brands)
-        this.listBrand = brands
+        this.listBrand = brands.results;
       }));
   }
   openAddMeasurementUnit(): void{
     const dialogRef = this.dialog.open(CreateMeasurementUnitComponent, {});
     dialogRef.afterClosed().subscribe(res => {
       if(res.data) {
-        console.log(res);
         this.getMeasurementUnit()
       }
     });
@@ -116,8 +111,7 @@ export class FormProductComponent implements OnInit {
   getMeasurementUnit() {
     this.measurementUnitService.getMeasurementUnit()
       .subscribe((measurementUnit =>{
-        console.log(measurementUnit)
-        this.listMeasurementUnit = measurementUnit
+        this.listMeasurementUnit = measurementUnit.results;
       }));
   }
 

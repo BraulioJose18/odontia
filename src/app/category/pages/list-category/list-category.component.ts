@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import {Product} from "../../../product/interfaces/category.interface";
+import {Product} from "../../../product/interfaces/product.interface";
 
 @Component({
   selector: 'app-list-product',

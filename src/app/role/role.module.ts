@@ -8,6 +8,7 @@ import {MaterialModule} from "../material/material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CategoryModule} from "../category/category.module";
 import { CreatePermissionComponent } from './components/create-permission/create-permission.component';
+import {PermissionModule} from "../permission/permission.module";
 
 
 
@@ -18,13 +19,13 @@ import { CreatePermissionComponent } from './components/create-permission/create
     HomeRoleComponent,
     CreatePermissionComponent
   ],
-    imports: [
-        CommonModule,
-        RoleRoutingModule,
-        MaterialModule,
-        ReactiveFormsModule,
-        CategoryModule
-    ],
+  imports: [
+    CommonModule,
+    RoleRoutingModule,
+    MaterialModule,
+    ReactiveFormsModule,
+    PermissionModule
+  ],
   exports: [
     FormRoleComponent
   ],

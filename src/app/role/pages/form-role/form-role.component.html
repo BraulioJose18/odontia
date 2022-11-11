@@ -4,27 +4,27 @@
     [ngClass]="{'padding-form-box' : !isDialogSub}"
   >
     <div class="form-container-box__header">
-      <h1>Agregar Subcategoría
+      <h1>Agregar Rol
       </h1>
     </div>
-    <form [formGroup]="formSubcategory">
+    <form [formGroup]="formRole">
       <div class="form-container-box__body">
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
-          <mat-label>Subcategoría</mat-label>
-          <input type="text" matInput placeholder="Ex. Medicina" formControlName="name">
+          <mat-label>Rol</mat-label>
+          <input type="text" matInput placeholder="Ex. Administrador" formControlName="name">
         </mat-form-field>
         <div style="display: flex; column-gap: 1rem">
           <mat-form-field class="right-container__inputs__custom-input" appearance="fill" style="width: 70%">
             <mat-select
-              placeholder="Categoría" formControlName="category"
+              placeholder="Permiso" formControlName="permission"
             >
-              <ng-container *ngFor="let item of listCategory">
-                <mat-option [value]="item.id">{{ item.name }}</mat-option>
+              <ng-container *ngFor="let item of listPermission">
+                <mat-option [value]="item.id">{{ item.path }}</mat-option>
               </ng-container>
             </mat-select>
           </mat-form-field>
-          <button mat-raised-button class="add-button" (click)="openAddCategory()">
-            Agregar Categoría
+          <button mat-raised-button class="add-button" (click)="openAddRole()">
+            Agregar Permiso
           </button>
         </div>
         <mat-slide-toggle

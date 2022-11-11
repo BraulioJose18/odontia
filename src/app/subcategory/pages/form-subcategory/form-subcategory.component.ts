@@ -7,10 +7,9 @@ import {SubcategoryService} from "../../services/subcategory.service";
 import {CategoryService} from "../../../category/services/category.service";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateCategoryComponent} from "../../components/create-category/create-category.component";
-import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-form-role',
+  selector: 'app-form-subcategory',
   templateUrl: './form-subcategory.component.html',
   styleUrls: ['./form-subcategory.component.scss']
 })
@@ -51,7 +50,7 @@ export class FormSubcategoryComponent implements OnInit {
     this.categoryService.getCategory()
       .subscribe((categories =>{
         console.log(categories)
-        this.listCategory = categories
+        this.listCategory = categories.results;
       }));
   }
   saveChanges(){

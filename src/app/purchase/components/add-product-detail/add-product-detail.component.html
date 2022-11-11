@@ -1,0 +1,35 @@
+<h1 mat-dialog-title style="text-align: right">
+  <mat-icon mat-dialog-close style="cursor: pointer"> close </mat-icon>
+</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+      <mat-select
+        placeholder="Producto" formControlName="product" (selectionChange)="updateProduct($event.value)"
+      >
+        <ng-container *ngFor="let item of listProducts">
+          <mat-option [value]="item">{{ item.name }}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+      <mat-label>Stock</mat-label>
+      <input type="text" matInput placeholder="0.00" formControlName="stock">
+    </mat-form-field>
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+      <mat-label>Precio Unitario</mat-label>
+      <input type="text" matInput placeholder="0.00" formControlName="unitPrice">
+    </mat-form-field>
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+      <mat-label>Precio Total</mat-label>
+      <input type="text" matInput placeholder="0.00" formControlName="totalPrice">
+    </mat-form-field>
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+      <mat-label>Cantidad</mat-label>
+      <input type="number" matInput placeholder="1" formControlName="quantity" (change)="updateProductPrice()">
+    </mat-form-field>
+  </form>
+  <button mat-raised-button class="add-button" type="submit" (click)="saveChanges()">
+    Añadir Producto
+  </button>
+</div>
