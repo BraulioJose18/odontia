@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         const token = this.authService.currentUserValue.token;
         if(token){
-          this.router.navigate(['admin/category/list']);
+          this.router.navigate(['admin/purchase/list']);
         }
       }
     }, (err) => {

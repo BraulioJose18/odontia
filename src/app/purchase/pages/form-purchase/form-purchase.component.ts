@@ -62,10 +62,12 @@ export class FormPurchaseComponent implements OnInit {
       //date: ['', Validators.required],
       //totalPrice: [{value: '', disabled: true}, Validators.required],
       totalPrice: [''],
-      providerFullName: ['', Validators.required],
-      providerAddress: ['', Validators.required],
+      providerAddress: [''],
+      providerDocumentType: [''],
+      providerDocumentNumber: [''],
     })
-    this.form.controls['providerFullName'].disable();
+    this.form.controls['providerDocumentType'].disable();
+    this.form.controls['providerDocumentNumber'].disable();
     this.form.controls['providerAddress'].disable();
 
   }
@@ -116,11 +118,16 @@ export class FormPurchaseComponent implements OnInit {
     })
   }
   selectProvider(user: any){
+    console.log(user);
     this.form.get('providerFullName')?.setValue(user.name + " " + user.last_name);
+    this.form.get('providerDocumentNumber')?.setValue(user.document_number);
+    this.form.get('providerDocumentType')?.setValue(user.document_type == 1 ? "DNI" : "RUC");
     this.form.get('providerAddress')?.setValue(user.address);
   }
   openAddProduct() {
-    const dialogRef = this.dialog.open(AddProductDetailComponent, {});
+    const dialogRef = this.dialog.open(AddProductDetailComponent, {
+      width: '700px'
+    });
     dialogRef.afterClosed().subscribe(res => {
       if(res.data) {
         let detailProduct = res.data;

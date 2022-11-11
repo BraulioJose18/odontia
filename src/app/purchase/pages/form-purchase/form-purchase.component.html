@@ -10,13 +10,13 @@
     <form [formGroup]="form">
       <div class="form-container-box__body">
 
-<!--        <mat-form-field appearance="fill">-->
-<!--          <mat-label>Fecha</mat-label>-->
-<!--          <input matInput [matDatepicker]="date">-->
-<!--          <mat-hint>DD/MM/YYYY</mat-hint>-->
-<!--          <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>-->
-<!--          <mat-datepicker #date></mat-datepicker>-->
-<!--        </mat-form-field>-->
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="date">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+          <mat-datepicker #date></mat-datepicker>
+        </mat-form-field>
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
           <mat-select
             placeholder="Tipo de Comprobante" formControlName="voucherType"
@@ -35,10 +35,16 @@
             </ng-container>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
-          <mat-label>Nombres</mat-label>
-          <input type="text" matInput placeholder="Ex. Proveedor 1" formControlName="providerFullName">
-        </mat-form-field>
+        <div style="display: flex; justify-content: space-between">
+          <mat-form-field class="right-container__inputs__custom-input" appearance="fill" style="width: 46%">
+            <mat-label>Tipo de Documento</mat-label>
+            <input type="text" matInput placeholder="Ex. Proveedor 1" formControlName="providerDocumentType">
+          </mat-form-field>
+          <mat-form-field class="right-container__inputs__custom-input" appearance="fill" style="width: 50%;">
+            <mat-label>No de Documento</mat-label>
+            <input type="text" matInput placeholder="111111111" formControlName="providerDocumentNumber">
+          </mat-form-field>
+        </div>
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
           <mat-label>Direccion</mat-label>
           <input type="text" matInput placeholder="Ex. Calle Siempre Viva" formControlName="providerAddress">
@@ -47,9 +53,11 @@
           <mat-label>Precio Total</mat-label>
           <input type="text" matInput placeholder="0.00" formControlName="totalPrice" [readonly]="true">
         </mat-form-field>
-        <button mat-raised-button class="add-button" (click)="openAddProduct()">
-          Agregar Productos
-        </button>
+        <div>
+          <button mat-raised-button class="add-button" (click)="openAddProduct()" style="margin-bottom: 1rem">
+            Agregar Productos
+          </button>
+        </div>
 
         <!-- Tabla de Productos -->
         <table mat-table [dataSource]="listDetailPurchase" class="mat-elevation-z8">

@@ -1,9 +1,10 @@
-<h1 mat-dialog-title style="text-align: right">
+<h1 mat-dialog-title style="display: flex; justify-content: space-between; text-align: right">
+  <h1>Agregar Producto</h1>
   <mat-icon mat-dialog-close style="cursor: pointer"> close </mat-icon>
 </h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
-    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill" style="width: 100%">
       <mat-select
         placeholder="Producto" formControlName="product" (selectionChange)="updateProduct($event.value)"
       >
@@ -12,24 +13,26 @@
         </ng-container>
       </mat-select>
     </mat-form-field>
-    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill" style="width: 49%">
       <mat-label>Stock</mat-label>
       <input type="text" matInput placeholder="0.00" formControlName="stock">
     </mat-form-field>
-    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
-      <mat-label>Precio Unitario</mat-label>
-      <input type="text" matInput placeholder="0.00" formControlName="unitPrice">
-    </mat-form-field>
-    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
-      <mat-label>Precio Total</mat-label>
-      <input type="text" matInput placeholder="0.00" formControlName="totalPrice">
-    </mat-form-field>
-    <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill" appearance="fill" style="margin-left: 2%; width: 49%">
       <mat-label>Cantidad</mat-label>
       <input type="number" matInput placeholder="1" formControlName="quantity" (change)="updateProductPrice()">
     </mat-form-field>
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill" appearance="fill" style="width: 49%">
+      <mat-label>Precio Unitario</mat-label>
+      <input type="text" matInput placeholder="0.00" formControlName="unitPrice">
+    </mat-form-field>
+    <mat-form-field class="right-container__inputs__custom-input" appearance="fill" appearance="fill" style="margin-left: 2%; width: 49%">
+      <mat-label>Precio Total</mat-label>
+      <input type="text" matInput placeholder="0.00" formControlName="totalPrice">
+    </mat-form-field>
   </form>
-  <button mat-raised-button class="add-button" type="submit" (click)="saveChanges()">
-    Añadir Producto
-  </button>
+  <div style="text-align: right">
+    <button mat-raised-button class="add-button" type="submit" (click)="saveChanges()">
+      Añadir Producto
+    </button>
+  </div>
 </div>
