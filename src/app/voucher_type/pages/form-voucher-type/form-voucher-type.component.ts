@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {VoucherTypeService} from "../../services/voucher-type.service";
 
 @Component({
-  selector: 'app-form-purchase',
+  selector: 'app-form-sale',
   templateUrl: './form-voucher-type.component.html',
   styleUrls: ['./form-voucher-type.component.scss']
 })

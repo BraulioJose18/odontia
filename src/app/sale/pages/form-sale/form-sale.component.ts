@@ -1,24 +1,24 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
-import {PurchaseDetail} from "../../interfaces/purchase.interface";
+import {SaleDetail} from "../../interfaces/sale.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
-import {PurchaseService} from "../../services/purchase.service";
+import {SaleService} from "../../services/sale.service";
 import {VoucherTypeService} from "../../../voucher_type/services/voucher-type.service";
 import {VoucherType} from "../../../voucher_type/interfaces/voucher.type.interface";
 import {UserService} from "../../../user/services/user.service";
 import {User} from "../../../user/interfaces/user.interface";
 import {MatTable} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
-import {AddProductDetailComponent} from "../../components/add-product-detail/add-product-detail.component";
+import {AddProductSaleDetailComponent} from "../../components/add-product-sale-detail/add-product-sale-detail.component";
 import {DatePipe} from '@angular/common'
 
 @Component({
   selector: 'app-form-sale',
-  templateUrl: './form-purchase.component.html',
-  styleUrls: ['./form-purchase.component.scss']
+  templateUrl: './form-sale.component.html',
+  styleUrls: ['./form-sale.component.scss']
 })
-export class FormPurchaseComponent implements OnInit {
+export class FormSaleComponent implements OnInit {
 
   form: FormGroup
   color: ThemePalette = 'accent';
@@ -40,7 +40,7 @@ export class FormPurchaseComponent implements OnInit {
   listVoucherType: VoucherType[] = [];
   listUser: User[] = [];
 
-  listDetailPurchase: PurchaseDetail[] = [];
+  listDetailPurchase: SaleDetail[] = [];
   displayedColumns: string[] = ['product', 'quantity', 'totalPrice', 'actions'];
   dataSource = [this.listDetailPurchase];
 
@@ -50,7 +50,7 @@ export class FormPurchaseComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private  purchaseService: PurchaseService,
+    private  saleService: SaleService,
     private voucherTypeService: VoucherTypeService,
     private userService: UserService,
     public dialog: MatDialog,
@@ -71,7 +71,7 @@ export class FormPurchaseComponent implements OnInit {
     this.form.controls['providerAddress'].disable();
 
   }
-  @ViewChild(MatTable) table?: MatTable<PurchaseDetail>;
+  @ViewChild(MatTable) table?: MatTable<SaleDetail>;
   ngOnInit(): void {
     console.log(this.isDialog);
     this.getVoucherTypes();
@@ -91,11 +91,11 @@ export class FormPurchaseComponent implements OnInit {
       totalPrice: form.totalPrice,
       detail: detailProduct,
       user: form.user.id,
-      movementType: 1,
+      movementType: 2,
       voucherType: form.voucherType,
       date: this.datepipe.transform(new Date(), 'yyyy-MM-dd')
     }
-    this.purchaseService.addPurchase(purchase)
+    this.saleService.addSale(purchase)
       .subscribe(resp => {
         console.log('Respuesta', resp);
         if(this.isDialog) {
@@ -103,7 +103,7 @@ export class FormPurchaseComponent implements OnInit {
           this.envioInformacionDialog.emit(resp);
         }else {
           console.log("Es ventana normal")
-          this.router.navigate(['admin/purchase/list']);
+          this.router.navigate(['admin/sale/list']);
         }
       });
   }
@@ -125,7 +125,7 @@ export class FormPurchaseComponent implements OnInit {
     this.form.get('providerAddress')?.setValue(user.address);
   }
   openAddProduct() {
-    const dialogRef = this.dialog.open(AddProductDetailComponent, {
+    const dialogRef = this.dialog.open(AddProductSaleDetailComponent, {
       width: '700px'
     });
     dialogRef.afterClosed().subscribe(res => {

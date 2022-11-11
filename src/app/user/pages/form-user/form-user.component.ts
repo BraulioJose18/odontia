@@ -6,7 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 
 @Component({
-  selector: 'app-form-purchase',
+  selector: 'app-form-sale',
   templateUrl: './form-user.component.html',
   styleUrls: ['./form-user.component.scss']
 })
