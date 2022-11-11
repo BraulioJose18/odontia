@@ -56,6 +56,7 @@ export class AddProductDetailComponent implements OnInit {
   }
   saveChanges(){
     const detailProduct = this.form.value
+    console.log(detailProduct);
     this.openSnackBar();
     this.dialogRef.close({data: detailProduct});
   }

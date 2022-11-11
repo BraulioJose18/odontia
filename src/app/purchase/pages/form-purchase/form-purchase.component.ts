@@ -138,4 +138,13 @@ export class FormPurchaseComponent implements OnInit {
       }
     });
   }
+  deleteProduct(product: any){
+    let newDetail = this.listDetailPurchase.filter((item) => {
+      return item.product != product.product
+    })
+    this.listDetailPurchase = newDetail;
+    this.table?.renderRows();
+    this.totalPrice = this.listDetailPurchase.reduce((acumulador, actual) => acumulador + actual.totalPrice, 0);
+    this.form.get('totalPrice')?.setValue(this.totalPrice);
+  }
 }
