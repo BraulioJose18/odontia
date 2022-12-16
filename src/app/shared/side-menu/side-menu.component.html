@@ -25,7 +25,7 @@
     <div
       [ngClass]="{'dropdown-image-no-display' : !clickDropDown,
                   'dropdown-image-display' : clickDropDown}">
-      <button class="mat-raised-button custom-button">
+      <button class="mat-raised-button custom-button" (click)="logout()">
         <mat-icon>logout</mat-icon>
         <span> Cerrar Sesión </span>
       </button>

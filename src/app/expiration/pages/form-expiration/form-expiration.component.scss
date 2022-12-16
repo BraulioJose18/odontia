@@ -1,0 +1,39 @@
+.form-container {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.padding-form-box{
+  padding: 4rem 0;
+}
+.form-container-box {
+  margin: 2rem;
+  width: 700px;
+  background-color: white;
+  &__header{
+    h1{
+      font-size: 2rem;
+      font-weight: 700;
+      color: #063777;
+    }
+  }
+  &__body{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+}
+.add-button {
+  background-color: #063777 ;
+  color: white;
+  width: 220px;
+  height: 50px;
+  font-size: 1.2rem;
+}
+

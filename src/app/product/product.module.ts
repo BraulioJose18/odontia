@@ -12,6 +12,7 @@ import {CreateMeasurementUnitComponent} from "./components/create-measurement-un
 import {BrandModule} from "../brand/brand.module";
 import {MeasurementUnitModule} from "../measurement_unit/measurement-unit.module";
 import {SubcategoryModule} from "../subcategory/subcategory.module";
+import {ExpirationListComponent} from "./components/expiration-list/expiration-list.component";
 
 
 
@@ -22,7 +23,8 @@ import {SubcategoryModule} from "../subcategory/subcategory.module";
     HomeProductComponent,
     CreateBrandComponent,
     CreateSubcategoryComponent,
-    CreateMeasurementUnitComponent
+    CreateMeasurementUnitComponent,
+    ExpirationListComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import {SubcategoryModule} from "../subcategory/subcategory.module";
   entryComponents: [
     CreateBrandComponent,
     CreateSubcategoryComponent,
-    CreateMeasurementUnitComponent
+    CreateMeasurementUnitComponent,
+    ExpirationListComponent
   ]
 })
 export class ProductModule { }

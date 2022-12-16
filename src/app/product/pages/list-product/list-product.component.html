@@ -53,20 +53,27 @@
         <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Observaciones </th>
         <td mat-cell *matCellDef="let element"> {{element.observation}} </td>
       </ng-container>
+      <ng-container matColumnDef="minimumStock">
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Stock Mínimo </th>
+        <td mat-cell *matCellDef="let element">{{element.minimumStock}}</td>
+      </ng-container>
+      <ng-container matColumnDef="averageStock">
+        <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Stock Medio </th>
+        <td mat-cell *matCellDef="let element">{{element.averageStock}}</td>
+      </ng-container>
       <ng-container matColumnDef="stock">
         <th mat-header-cell *matHeaderCellDef class="width-column" mat-sort-header> Stock </th>
         <td mat-cell *matCellDef="let element">
           <div
             class="product-stock"
-            [ngClass]="{'good-stock' : element.stock >= 20,
-            'regular-stock': element.stock < 20 && element.stock > 10,
-            'bad-stock': element.stock <= 10}"
+            [ngClass]="{'good-stock' : element.stock >= element.averageStock,
+            'regular-stock': element.stock < element.averageStock && element.stock > element.minimumStock,
+            'bad-stock': element.stock <= element.minimumStock}"
           >
             {{element.stock}}
           </div>
         </td>
       </ng-container>
-
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
         <td mat-cell *matCellDef="let element"> {{element.status ? 'Activo' : 'Inactivo'}} </td>
@@ -75,20 +82,36 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-raised-button matTooltip="Editar Categoría" class="edit-button">
-            <mat-icon
-              style="cursor: pointer"
-            >
-              edit
-            </mat-icon>
-          </button>
-          <button mat-raised-button matTooltip="Eliminar Categoría" class="delete-button">
-            <mat-icon
-              style="cursor: pointer"
-            >
-              delete
-            </mat-icon>
-          </button>
+          <div class="action-structure">
+            <button mat-raised-button matTooltip="Fechas de Vencimiento" class="general-button detail-button" *ngIf="element.haveExpiration">
+              <mat-icon
+                style="cursor: pointer"
+              >
+                calendar_today
+              </mat-icon>
+            </button>
+            <button mat-raised-button matTooltip="Editar Producto" class="general-button edit-button">
+              <mat-icon
+                style="cursor: pointer"
+              >
+                edit
+              </mat-icon>
+            </button>
+            <button mat-raised-button matTooltip="Eliminar Producto" class="general-button delete-button">
+              <mat-icon
+                style="cursor: pointer"
+              >
+                delete
+              </mat-icon>
+            </button>
+            <button mat-raised-button matTooltip="Vencimiento" class="general-button detail-button" *ngIf="element.hasExpiration===true">
+              <mat-icon
+                style="cursor: pointer"
+              >
+                inventory
+              </mat-icon>
+            </button>
+          </div>
         </td>
       </ng-container>
 

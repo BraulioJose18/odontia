@@ -113,7 +113,7 @@ export class FormSaleComponent implements OnInit {
     })
   }
   getProviders(){
-    this.userService.getListUser().subscribe((res) =>{
+    this.userService.getListClient().subscribe((res) =>{
       this.listUser = res.results;
     })
   }

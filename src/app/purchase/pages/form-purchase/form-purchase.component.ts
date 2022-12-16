@@ -113,7 +113,7 @@ export class FormPurchaseComponent implements OnInit {
     })
   }
   getProviders(){
-    this.userService.getListUser().subscribe((res) =>{
+    this.userService.getListProvider().subscribe((res) =>{
       this.listUser = res.results;
     })
   }

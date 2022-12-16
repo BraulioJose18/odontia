@@ -2,3 +2,32 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+//actions
+.action-structure {
+  display: flex;
+  column-gap: 0.4rem;
+  align-items: center
+}
+
+//Botones generales
+.general-button {
+  color: white;
+  height: 35px;
+}
+.detail-button {
+  background-color: #00BE7D ;
+}
+.edit-button {
+  background-color: #063777 ;
+}
+.delete-button {
+  background-color: red ;
+}
+.add-button {
+  background-color: #063777 ;
+  color: white;
+  height: 50px;
+  font-size: 1.2rem;
+}
+

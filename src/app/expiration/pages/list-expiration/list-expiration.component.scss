@@ -24,27 +24,22 @@ table {
 .search-field {
   width: 500px;
 }
-.product-stock {
-  width: 50%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  border-radius: 10px;
-  height: 20px;
+.edit-button {
+  background-color: #063777 ;
   color: white;
+}
+.delete-button {
+  background-color: red ;
+  color: white;
+  margin-left: 1rem;
+}
+.add-button {
+  background-color: #063777 ;
+  color: white;
+  width: 220px;
+  height: 50px;
   font-size: 1.2rem;
-  font-weight: 600;
 }
-.good-stock {
-  width: 80%;
-  background-color: green;
-}
-.bad-stock {
-  width: 80%;
-  background-color: red;
-}
-.regular-stock {
-  width: 80%;
-  background-color: #FFDF01;
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell{
+  width: 300px !important;
 }

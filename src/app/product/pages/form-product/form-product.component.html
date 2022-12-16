@@ -72,12 +72,41 @@
           <mat-label>Stock</mat-label>
           <input type="text" matInput placeholder="Ex. 10" formControlName="stock">
         </mat-form-field>
+        <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+          <mat-label>Stock Minimo</mat-label>
+          <input type="text" matInput placeholder="Ex. 15" formControlName="minimumStock">
+        </mat-form-field>
+        <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
+          <mat-label>Stock Medio</mat-label>
+          <input type="text" matInput placeholder="Ex. 20" formControlName="averageStock">
+        </mat-form-field>
         <mat-slide-toggle
           class="example-margin"
           color="primary"
+          formControlName="status"
           [checked]="checked">
           Estado
         </mat-slide-toggle>
+        <mat-slide-toggle
+          class="example-margin"
+          color="primary"
+          formControlName="haveExpiration"
+          (change)="prueba($event)"
+          [checked]="checked">
+          ¿Tiene fecha de vencimiento?
+        </mat-slide-toggle>
+<!--        <div *ngIf="haveExpiration">-->
+<!--          <form [formGroup]="formProductExpiration">-->
+<!--            <mat-form-field class="right-container__inputs__custom-input" appearance="fill">-->
+<!--              <mat-label>Fecha de Vencimiento</mat-label>-->
+<!--              <input type="text" matInput placeholder="Ex. 30/12/2023" formControlName="dateExpiration">-->
+<!--            </mat-form-field>-->
+<!--            <mat-form-field class="right-container__inputs__custom-input" appearance="fill">-->
+<!--              <mat-label>Cantidad</mat-label>-->
+<!--              <input type="text" matInput placeholder="Ex. 10" formControlName="quantity">-->
+<!--            </mat-form-field>-->
+<!--          </form>-->
+<!--        </div>-->
       </div>
       <div class="form-container-box__actions">
         <button mat-raised-button class="add-button" type="submit" (click)="saveChanges()">

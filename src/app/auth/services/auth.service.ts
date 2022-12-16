@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {BehaviorSubject, catchError, map, Observable, throwError} from "rxjs";
 import {UserLogin, UserResponse} from "../../user/interfaces/user.interface";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class AuthService {
   private baseUrl: string = environment.api
 
   constructor(
+    private router: Router,
     private http: HttpClient
   ) {
     this.currentUserSubject = new BehaviorSubject<UserResponse>(
@@ -49,7 +51,7 @@ export class AuthService {
     localStorage.removeItem('user');
     // @ts-ignore
     this.currentUserSubject.next(null);
-    console.log("Cerre Sesion")
+    this.router.navigate(['/auth/login'])
   }
   private getUserData(accessToken: string) {
     return JSON.parse(atob(accessToken.split('.')[1]));

@@ -11,7 +11,10 @@ export interface Product {
   specifications:  string;
   observation:     string;
   stock:           number;
+  minimumStock:    number;
+  averageStock:    number;
   subcategory:     Subcategory;
   measurementUnit: MeasurementUnit;
   brand:           Brand;
+  haveExpiration: boolean;
 }

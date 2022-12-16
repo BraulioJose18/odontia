@@ -4,7 +4,6 @@ import {Product} from "../../interfaces/product.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../services/product.service";
-import {CreateCategoryComponent} from "../../../subcategory/components/create-category/create-category.component";
 import {MatDialog} from "@angular/material/dialog";
 import {SubcategoryService} from "../../../subcategory/services/subcategory.service";
 import {Subcategory} from "../../../subcategory/interfaces/subcategory.interface";
@@ -26,9 +25,11 @@ import {
 export class FormProductComponent implements OnInit {
 
   formProduct: FormGroup
+  //formProductExpiration: FormGroup
   color: ThemePalette = 'accent';
   checked = true;
   disabled = false;
+  haveExpiration = false;
   listSubcategory: Subcategory [] = [];
   listBrand: Brand [] = [];
   listMeasurementUnit: MeasurementUnit [] = [];
@@ -52,9 +53,16 @@ export class FormProductComponent implements OnInit {
       salePrice: ['', Validators.required],
       specifications: ['', Validators.required],
       stock: ['', Validators.required],
+      minimumStock: ['', Validators.required],
+      averageStock: ['', Validators.required],
       observation: ['', Validators.required],
-      status: ['', Validators.required]
+      haveExpiration: [false, Validators.required],
+      status: [true, Validators.required]
     })
+    // this.formProductExpiration = this.formBuilder.group({
+    //   dateExpiration: ['', Validators.required],
+    //   quantity: ['', Validators.required]
+    // })
   }
 
   ngOnInit(): void {
@@ -63,8 +71,9 @@ export class FormProductComponent implements OnInit {
     this.getMeasurementUnit()
   }
   saveChanges(){
+    console.log(this.formProduct.value);
     const product = this.formProduct.value;
-    product.status = true
+    //product.status = true
     console.log(product)
     this.productService.addProduct(product)
       .subscribe(resp => {
@@ -113,6 +122,9 @@ export class FormProductComponent implements OnInit {
       .subscribe((measurementUnit =>{
         this.listMeasurementUnit = measurementUnit.results;
       }));
+  }
+  prueba(el: any){
+    this.haveExpiration = el.checked;
   }
 
 }
