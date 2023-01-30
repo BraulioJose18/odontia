@@ -10,13 +10,15 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class ExpirationListComponent implements OnInit {
 
   response: object = {}
+  idProduct: number = 0;
   constructor(
     private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<ExpirationListComponent>,
-    @Inject(MAT_DIALOG_DATA) public message: string
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
+    this.idProduct = this.data.id;
   }
   openSnackBar() {
     this.snackBar.open("Se creo correctamente la marca","Cerrar", {duration: 3000});

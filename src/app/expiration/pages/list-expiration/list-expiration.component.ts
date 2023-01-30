@@ -1,7 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ExpirationService} from "../../services/expiration.service";
 import {Expiration} from "../../interfaces/Expiration";
 import {Router} from "@angular/router";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {MatSort} from "@angular/material/sort";
+import {MatDialog} from "@angular/material/dialog";
+import {ExpirationListComponent} from "../../../product/components/expiration-list/expiration-list.component";
+import {FormExpirationComponent} from "../form-expiration/form-expiration.component";
 
 @Component({
   selector: 'app-list-expiration',
@@ -10,25 +16,42 @@ import {Router} from "@angular/router";
 })
 export class ListExpirationComponent implements OnInit {
 
-  brands: Expiration[] = [];
-  displayedColumns: string[] = ['name', 'status', 'actions'];
+  expirations: Expiration[] = [];
+  displayedColumns: string[] = ['dateExpiration', 'quantity', 'actions'];
+  dataSource !: MatTableDataSource<Expiration>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   @Input() isDialog: boolean = false;
+  @Input() idProduct: number = 1;
 
   constructor(
-    private categoryService: ExpirationService,
-    private router: Router
+    private expirationService: ExpirationService,
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.categoryService.getBrand()
-      .subscribe((brands) =>{
-        this.brands = brands.results
+    this.getAllExpirationByProduct()
+  }
+  getAllExpirationByProduct(){
+    this.expirationService.getAllExpirationByProduct(this.idProduct)
+      .subscribe((expiration) =>{
+        this.expirations = expiration.results
+        this.dataSource = new MatTableDataSource(this.expirations);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
   }
   crearActualizar() {
-    console.log("Prueba")
-    this.router.navigate(['admin/brand/add']);
+    const dialogRef = this.dialog.open(FormExpirationComponent, {data: {idProduct: this.idProduct}}, );
+    dialogRef.afterClosed().subscribe(res => {
+      if(res.data) {
+        console.log(res);
+        this.getAllExpirationByProduct();
+      }
+    });
   }
 
 }

@@ -56,7 +56,7 @@ export class FormProductComponent implements OnInit {
       minimumStock: ['', Validators.required],
       averageStock: ['', Validators.required],
       observation: ['', Validators.required],
-      haveExpiration: [false, Validators.required],
+      hasExpiration: [false, Validators.required],
       status: [true, Validators.required]
     })
     // this.formProductExpiration = this.formBuilder.group({

@@ -30,4 +30,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 50px;
   font-size: 1.2rem;
 }
+th.mat-header-cell {
+  text-align: center !important;
+}
+//td.mat-cell {
+//  text-align: center !important;
+//}
 

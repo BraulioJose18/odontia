@@ -13,8 +13,7 @@ import {BrandModule} from "../brand/brand.module";
 import {MeasurementUnitModule} from "../measurement_unit/measurement-unit.module";
 import {SubcategoryModule} from "../subcategory/subcategory.module";
 import {ExpirationListComponent} from "./components/expiration-list/expiration-list.component";
-
-
+import {ExpirationModule} from "../expiration/expiration.module";
 
 @NgModule({
   declarations: [
@@ -33,7 +32,8 @@ import {ExpirationListComponent} from "./components/expiration-list/expiration-l
     ReactiveFormsModule,
     BrandModule,
     MeasurementUnitModule,
-    SubcategoryModule
+    SubcategoryModule,
+    ExpirationModule
   ],
   entryComponents: [
     CreateBrandComponent,

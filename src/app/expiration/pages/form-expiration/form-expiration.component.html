@@ -1,24 +1,70 @@
 <section class="form-container">
   <article class="form-container-box">
     <div class="form-container-box__header">
-      <h1>Agregar Marca
+      <h1>Agregar Fecha de Expiración
       </h1>
     </div>
-    <form [formGroup]="formCategory" (ngSubmit)="saveChanges()">
+    <form [formGroup]="formExpiration">
       <div class="form-container-box__body">
         <mat-form-field class="right-container__inputs__custom-input" appearance="fill">
-          <mat-label>Marca</mat-label>
-          <input type="text" matInput placeholder="Ex. Medicina" formControlName="name">
+          <mat-label>Cantidad</mat-label>
+          <input type="text" matInput placeholder="Ex. 10" formControlName="quantity">
         </mat-form-field>
-        <mat-slide-toggle
-          class="example-margin"
-          color="primary"
-          [checked]="checked">
-          Estado
-        </mat-slide-toggle>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            formControlName="dateExpiration"
+            autocomplete="off"
+            type="date"
+            placeholder="Fecha Final"
+          />
+<!--          <mat-label>Fecha</mat-label>-->
+<!--          <input matInput [matDatepicker]="date" formControlName="dateExpiration" type="datetime-local">-->
+<!--          <mat-hint>DD/MM/YYYY</mat-hint>-->
+<!--          <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>-->
+<!--          <mat-datepicker #date></mat-datepicker>-->
+        </mat-form-field>
+        <button mat-raised-button class="add-button" (click)="addExpiration()">
+          Agregar Fecha
+        </button>
+        <!-- Tabla de Productos -->
+        <table mat-table [dataSource]="listDetailExpiration" class="mat-elevation-z8">
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+          </ng-container>
+          <ng-container matColumnDef="dateExpiration">
+            <th mat-header-cell *matHeaderCellDef> Fecha de Vencimiento </th>
+            <td mat-cell *matCellDef="let element"> {{element.dateExpiration}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let element">
+              <!--              <button mat-raised-button matTooltip="Editar" class="edit-button">-->
+              <!--                <mat-icon-->
+              <!--                  style="cursor: pointer"-->
+              <!--                >-->
+              <!--                  edit-->
+              <!--                </mat-icon>-->
+              <!--              </button>-->
+              <button mat-raised-button matTooltip="Eliminar" class="general-button delete-button" (click)="deleteExpiration(element)">
+                <mat-icon
+                  style="cursor: pointer"
+                >
+                  delete
+                </mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
       </div>
       <div class="form-container-box__actions">
-        <button mat-raised-button class="add-button" type="submit">
+        <button mat-raised-button class="add-button" type="submit" (click)="saveChanges()">
           Guardar Cambios
         </button>
       </div>

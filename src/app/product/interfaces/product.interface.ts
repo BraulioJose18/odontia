@@ -16,5 +16,5 @@ export interface Product {
   subcategory:     Subcategory;
   measurementUnit: MeasurementUnit;
   brand:           Brand;
-  haveExpiration: boolean;
+  hasExpiration: boolean;
 }

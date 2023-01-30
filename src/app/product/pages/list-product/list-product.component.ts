@@ -5,6 +5,8 @@ import {Product} from "../../interfaces/product.interface";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {MatDialog} from "@angular/material/dialog";
+import {ExpirationListComponent} from "../../components/expiration-list/expiration-list.component";
 
 @Component({
   selector: 'app-list-product',
@@ -22,7 +24,8 @@ export class ListProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +47,13 @@ export class ListProductComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  listExpiration(element: any) {
+    const dialogRef = this.dialog.open(ExpirationListComponent, {data: element}, );
+    dialogRef.afterClosed().subscribe(res => {
+      if(res.data) {
+      }
+    });
   }
 
 }

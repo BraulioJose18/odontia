@@ -104,7 +104,9 @@
                 delete
               </mat-icon>
             </button>
-            <button mat-raised-button matTooltip="Vencimiento" class="general-button detail-button" *ngIf="element.hasExpiration===true">
+            <button mat-raised-button matTooltip="Vencimiento" class="general-button detail-button"
+                    *ngIf="element.hasExpiration===true"
+                    (click)="listExpiration(element)">
               <mat-icon
                 style="cursor: pointer"
               >
