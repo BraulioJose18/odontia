@@ -9,7 +9,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {ExpirationListComponent} from "../../components/expiration-list/expiration-list.component";
 
 @Component({
-  selector: 'app-list-product',
+  selector: 'app-list-stock',
   templateUrl: './list-product.component.html',
   styleUrls: ['./list-product.component.scss']
 })

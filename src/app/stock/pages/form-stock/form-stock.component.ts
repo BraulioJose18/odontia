@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
-import {Product} from "../../interfaces/product.interface";
+import {StockRegularize} from "../../interfaces/stock.interface";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {ProductService} from "../../services/product.service";
+import {StockService} from "../../services/stock.service";
 import {MatDialog} from "@angular/material/dialog";
 import {SubcategoryService} from "../../../subcategory/services/subcategory.service";
 import {Subcategory} from "../../../subcategory/interfaces/subcategory.interface";
@@ -18,11 +18,11 @@ import {
 } from "../../components/create-measurement-unit/create-measurement-unit.component";
 
 @Component({
-  selector: 'app-form-product',
-  templateUrl: './form-product.component.html',
-  styleUrls: ['./form-product.component.scss']
+  selector: 'app-form-stock',
+  templateUrl: './form-stock.component.html',
+  styleUrls: ['./form-stock.component.scss']
 })
-export class FormProductComponent implements OnInit {
+export class FormStockComponent implements OnInit {
 
   formProduct: FormGroup
   //formProductExpiration: FormGroup
@@ -37,7 +37,7 @@ export class FormProductComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private  productService: ProductService,
+    private  productService: StockService,
     private  subcategoryService: SubcategoryService,
     private  brandService: BrandService,
     private  measurementUnitService: MeasurementUnitService,
@@ -75,11 +75,11 @@ export class FormProductComponent implements OnInit {
     const product = this.formProduct.value;
     //product.status = true
     console.log(product)
-    this.productService.addProduct(product)
-      .subscribe(resp => {
-        console.log('Respuesta', resp);
-        this.router.navigate(['admin/product/list']);
-      });
+    // this.productService.addProduct(product)
+    //   .subscribe(resp => {
+    //     console.log('Respuesta', resp);
+    //     this.router.navigate(['admin/product/list']);
+    //   });
   }
   openAddSubCategory(): void{
     const dialogRef = this.dialog.open(CreateSubcategoryComponent, {});

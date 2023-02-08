@@ -8,7 +8,7 @@ import {MatSort} from "@angular/material/sort";
 import {Product} from "../../../product/interfaces/product.interface";
 
 @Component({
-  selector: 'app-list-product',
+  selector: 'app-list-stock',
   templateUrl: './list-category.component.html',
   styleUrls: ['./list-category.component.scss']
 })

@@ -7,7 +7,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 
 @Component({
-  selector: 'app-list-product',
+  selector: 'app-list-stock',
   templateUrl: './list-voucher-type.component.html',
   styleUrls: ['./list-voucher-type.component.scss']
 })

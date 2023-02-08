@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 import {MeasurementUnit} from "../../interfaces/measurement.unit.interface";
 
 @Component({
-  selector: 'app-list-product',
+  selector: 'app-list-stock',
   templateUrl: './list-measurement-unit.component.html',
   styleUrls: ['./list-measurement-unit.component.scss']
 })

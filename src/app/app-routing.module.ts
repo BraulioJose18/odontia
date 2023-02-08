@@ -39,6 +39,10 @@ const routes: Routes = [
         loadChildren: ()=> import('./product/product.module').then(m => m.ProductModule)
       },
       {
+        path: 'stock',
+        loadChildren: ()=> import('./stock/stock.module').then(m => m.StockModule)
+      },
+      {
         path: 'voucherType',
         loadChildren: ()=> import('./voucher_type/voucher-type.module').then(m => m.VoucherTypeModule)
       },
