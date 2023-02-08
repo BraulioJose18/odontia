@@ -45,19 +45,15 @@ export class FormUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.isDialog);
   }
   saveChanges(){
     const user = this.formVoucherType.value;
     user.status = true
     this.voucherTypeService.addUser(user)
       .subscribe(resp => {
-        console.log('Respuesta', resp);
         if(this.isDialog) {
-          console.log("Es dialogo")
           this.envioInformacionDialog.emit(resp);
         }else {
-          console.log("Es ventana normal")
           this.router.navigate(['admin/voucherType/list']);
         }
       });

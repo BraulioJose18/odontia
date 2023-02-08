@@ -56,15 +56,11 @@ export class FormSubcategoryComponent implements OnInit {
   saveChanges(){
     const subcategory = this.formSubcategory.value;
     subcategory.status = true
-    console.log(subcategory)
     this.subcategoryService.addSubcategory(subcategory)
       .subscribe(resp => {
-        console.log('Respuesta', resp);
         if(this.isDialogSub) {
-          console.log("Es dialogo")
           this.envioInformacionDialog.emit(resp);
         }else {
-          console.log("Es ventana normal")
           this.router.navigate(['admin/subcategory/list']);
         }
       });
@@ -73,10 +69,8 @@ export class FormSubcategoryComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateCategoryComponent, {});
     dialogRef.afterClosed().subscribe(res => {
       if(res.data) {
-        console.log(res);
         this.getCategories()
       }else {
-        console.log("Gaaa");
       }
     });
   }

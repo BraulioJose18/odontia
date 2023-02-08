@@ -39,19 +39,15 @@ export class FormVoucherTypeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.isDialog);
   }
   saveChanges(){
     const voucherType = this.formVoucherType.value;
     voucherType.status = true
     this.voucherTypeService.addVoucherType(voucherType)
       .subscribe(resp => {
-        console.log('Respuesta', resp);
         if(this.isDialog) {
-          console.log("Es dialogo")
           this.envioInformacionDialog.emit(resp);
         }else {
-          console.log("Es ventana normal")
           this.router.navigate(['admin/voucherType/list']);
         }
       });

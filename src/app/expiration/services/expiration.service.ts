@@ -32,4 +32,7 @@ export class ExpirationService {
   updateExpirationDetailByProduct(expiration: any, idProduct: number): Observable<any> {
     return this.http.put<any>(this.baseUrl + idProduct + "/",expiration)
   }
+  deleteExpirationDetailByProduct(idExpiration: number): Observable<any> {
+    return this.http.delete<any>(this.baseUrl + idExpiration + "/")
+  }
 }

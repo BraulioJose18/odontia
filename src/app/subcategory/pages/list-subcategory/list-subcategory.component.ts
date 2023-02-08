@@ -43,8 +43,6 @@ export class ListSubcategoryComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   edit(idSubcategory: number){
-    console.log(idSubcategory)
-    console.log(this.route)
     this.router.navigate([idSubcategory], {
       relativeTo: this.route
     });
