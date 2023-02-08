@@ -29,4 +29,7 @@ export class ExpirationService {
   addExpirationCustom(expiration: any): Observable<any> {
     return this.http.post<any>(this.baseUrl2,expiration)
   }
+  updateExpirationDetailByProduct(expiration: any, idProduct: number): Observable<any> {
+    return this.http.put<any>(this.baseUrl + idProduct + "/",expiration)
+  }
 }

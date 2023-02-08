@@ -1,7 +1,7 @@
 <section class="form-container">
   <article class="form-container-box">
     <div class="form-container-box__header">
-      <h1>Agregar Fecha de Expiración
+      <h1>{{this.data.detalle.details == null ? "Agregar" : "Editar"}} Fecha de Expiración
       </h1>
     </div>
     <form [formGroup]="formExpiration">
@@ -24,11 +24,11 @@
 <!--          <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>-->
 <!--          <mat-datepicker #date></mat-datepicker>-->
         </mat-form-field>
-        <button mat-raised-button class="add-button" (click)="addExpiration()">
+        <button mat-raised-button class="add-button" (click)="addExpiration()" *ngIf="this.data.detalle.details == null">
           Agregar Fecha
         </button>
         <!-- Tabla de Productos -->
-        <table mat-table [dataSource]="listDetailExpiration" class="mat-elevation-z8">
+        <table mat-table [dataSource]="listDetailExpiration" class="mat-elevation-z8" *ngIf="this.data.detalle.details == null">
           <ng-container matColumnDef="quantity">
             <th mat-header-cell *matHeaderCellDef> Cantidad </th>
             <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>

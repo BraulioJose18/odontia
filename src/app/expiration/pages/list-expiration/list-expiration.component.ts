@@ -24,7 +24,7 @@ export class ListExpirationComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   @Input() isDialog: boolean = false;
-  @Input() idProduct: number = 1;
+  @Input() idProduct: number = 0;
 
   constructor(
     private expirationService: ExpirationService,
@@ -44,8 +44,14 @@ export class ListExpirationComponent implements OnInit {
         this.dataSource.sort = this.sort;
       });
   }
-  crearActualizar() {
-    const dialogRef = this.dialog.open(FormExpirationComponent, {data: {idProduct: this.idProduct}}, );
+  crearActualizar(element: any) {
+    //element.idProduct = this.idProduct;
+    let envio = {
+      idProduct: this.idProduct,
+      details: element
+    }
+    console.log(envio)
+    const dialogRef = this.dialog.open(FormExpirationComponent, {data: {detalle:  envio}} );
     dialogRef.afterClosed().subscribe(res => {
       if(res.data) {
         console.log(res);
