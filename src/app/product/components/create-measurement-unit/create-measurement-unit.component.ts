@@ -19,7 +19,7 @@ export class CreateMeasurementUnitComponent implements OnInit {
   ngOnInit(): void {
   }
   openSnackBar() {
-    this.snackBar.open("Se creo correctamente la unidad de medida","Cerrar", {duration: 3000});
+    this.snackBar.open("Se creo correctamente la unidad","Cerrar", {duration: 3000});
   }
   saveChanges(event: any){
     console.log(event)
