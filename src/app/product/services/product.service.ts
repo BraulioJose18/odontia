@@ -15,6 +15,9 @@ export class ProductService {
   getProducts(): Observable<any> {
     return this.http.get<any>(this.baseUrl)
   }
+  getProductsCustom(): Observable<any> {
+    return this.http.get<any>(this.baseUrl+"products/custom")
+  }
   getProductById(id: string): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl+id)
   }

@@ -40,6 +40,7 @@ export class ListExpirationComponent implements OnInit {
   getAllExpirationByProduct(){
     this.expirationService.getAllExpirationByProduct(this.idProduct)
       .subscribe((expiration) =>{
+        console.log(expiration.results);
         this.expirations = expiration.results
         this.dataSource = new MatTableDataSource(this.expirations);
         this.dataSource.paginator = this.paginator;

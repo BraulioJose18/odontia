@@ -24,7 +24,6 @@ export class ExpirationListComponent implements OnInit {
     this.snackBar.open("Se creo correctamente la marca","Cerrar", {duration: 3000});
   }
   saveChanges(event: any){
-    console.log(event)
     this.openSnackBar();
     this.dialogRef.close({data: event});
   }

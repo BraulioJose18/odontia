@@ -7,6 +7,7 @@ import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatDialog} from "@angular/material/dialog";
 import {ExpirationListComponent} from "../../components/expiration-list/expiration-list.component";
+import {ProductCustom} from "../../interfaces/productCustom.interface";
 
 @Component({
   selector: 'app-list-stock',
@@ -15,9 +16,9 @@ import {ExpirationListComponent} from "../../components/expiration-list/expirati
 })
 export class ListProductComponent implements OnInit {
 
-  products: Product[] = [];
-  displayedColumns: string[] = ['name', 'subcategory', 'brand', 'measurementUnit','salePrice', 'purchasePrice', 'specifications', 'observation','minimumStock', 'averageStock', 'stock','status', 'actions'];
-  dataSource !: MatTableDataSource<Product>;
+  products: ProductCustom[] = [];
+  displayedColumns: string[] = ['name', 'subcategory_name', 'brand_name', 'unit_name','salePrice', 'purchasePrice', 'specifications', 'observation','minimumStock', 'averageStock', 'stock','status', 'actions'];
+  dataSource !: MatTableDataSource<ProductCustom>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -32,9 +33,9 @@ export class ListProductComponent implements OnInit {
     this.getProducts()
   }
   getProducts(){
-    this.productService.getProducts()
+    this.productService.getProductsCustom()
       .subscribe((products) =>{
-        this.products = products.results
+        this.products = products.data
         this.dataSource = new MatTableDataSource(this.products);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
@@ -51,6 +52,8 @@ export class ListProductComponent implements OnInit {
   listExpiration(element: any) {
     const dialogRef = this.dialog.open(ExpirationListComponent, {data: element}, );
     dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      this.getProducts();
       if(res.data) {
       }
     });

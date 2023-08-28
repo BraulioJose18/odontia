@@ -17,7 +17,8 @@ export class ExpirationService {
   getAllExpiration(): Observable<any> {
     return this.http.get<any>(this.baseUrl)
   }
-  getAllExpirationByProduct(idProduct: number): Observable<any> {
+
+  getAllExpirationByProduct(idProduct: number | undefined): Observable<any> {
     return this.http.get<any>(this.baseUrl+"?product="+idProduct)
   }
   getExpirationById(id: string): Observable<any> {
